@@ -7,23 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E82981D621083A9E005240EC /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82981D521083A9E005240EC /* CoreDataHelper.swift */; };
+		E82981D92108AE08005240EC /* Koso.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E82981D72108AE08005240EC /* Koso.xcdatamodeld */; };
+		E82981DC2108B1FC005240EC /* Date+ConverterToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82981DB2108B1FC005240EC /* Date+ConverterToString.swift */; };
+		E8780E1E2108E8E400113C69 /* ToDoTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E1D2108E8E400113C69 /* ToDoTableCellView.swift */; };
+		E8780E202108E90000113C69 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E1F2108E90000113C69 /* ListTableViewCell.swift */; };
+		E8780E222108E91600113C69 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E212108E91600113C69 /* NoteTableViewCell.swift */; };
+		E8780E242108E92B00113C69 /* AgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E232108E92B00113C69 /* AgendaTableViewCell.swift */; };
+		E8780E262108EA4A00113C69 /* AddElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E252108EA4A00113C69 /* AddElements.swift */; };
+		E8780E282108ED3C00113C69 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E272108ED3C00113C69 /* Element.swift */; };
+		E8780E2A2108EE0A00113C69 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E292108EE0A00113C69 /* ToDo.swift */; };
+		E8780E2C2108EE3300113C69 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E2B2108EE3300113C69 /* Note.swift */; };
+		E8780E2E2108EE4500113C69 /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E2D2108EE4500113C69 /* Agenda.swift */; };
+		E8780E302108EE7B00113C69 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E2F2108EE7B00113C69 /* List.swift */; };
 		E8946C952107944200351C64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946C942107944200351C64 /* AppDelegate.swift */; };
 		E8946C972107944200351C64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946C962107944200351C64 /* ViewController.swift */; };
 		E8946C9A2107944200351C64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8946C982107944200351C64 /* Main.storyboard */; };
-		E8946C9D2107944200351C64 /* Koso.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8946C9B2107944200351C64 /* Koso.xcdatamodeld */; };
 		E8946C9F2107944700351C64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8946C9E2107944700351C64 /* Assets.xcassets */; };
 		E8946CA22107944700351C64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8946CA02107944700351C64 /* LaunchScreen.storyboard */; };
+		E8946CD82107C9F300351C64 /* ProjectManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946CD72107C9F300351C64 /* ProjectManagerViewController.swift */; };
+		E8946CDA2107CA0300351C64 /* NewProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946CD92107CA0300351C64 /* NewProjectViewController.swift */; };
+		E8946CDC2107CA9000351C64 /* DisplayProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946CDB2107CA9000351C64 /* DisplayProjectViewController.swift */; };
+		E8946CDE2107CB3D00351C64 /* NewProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946CDD2107CB3D00351C64 /* NewProjectTableViewCell.swift */; };
+		E8946CE02107CB5200351C64 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946CDF2107CB5200351C64 /* ProjectTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E82981D521083A9E005240EC /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		E82981D82108AE08005240EC /* Koso.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Koso.xcdatamodel; sourceTree = "<group>"; };
+		E82981DB2108B1FC005240EC /* Date+ConverterToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ConverterToString.swift"; sourceTree = "<group>"; };
+		E8780E1D2108E8E400113C69 /* ToDoTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableCellView.swift; sourceTree = "<group>"; };
+		E8780E1F2108E90000113C69 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		E8780E212108E91600113C69 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
+		E8780E232108E92B00113C69 /* AgendaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaTableViewCell.swift; sourceTree = "<group>"; };
+		E8780E252108EA4A00113C69 /* AddElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddElements.swift; sourceTree = "<group>"; };
+		E8780E272108ED3C00113C69 /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
+		E8780E292108EE0A00113C69 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		E8780E2B2108EE3300113C69 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		E8780E2D2108EE4500113C69 /* Agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
+		E8780E2F2108EE7B00113C69 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		E8946C912107944200351C64 /* Koso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8946C942107944200351C64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8946C962107944200351C64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E8946C992107944200351C64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E8946C9C2107944200351C64 /* Koso.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Koso.xcdatamodel; sourceTree = "<group>"; };
 		E8946C9E2107944700351C64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8946CA12107944700351C64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8946CA32107944700351C64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8946CD72107C9F300351C64 /* ProjectManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerViewController.swift; sourceTree = "<group>"; };
+		E8946CD92107CA0300351C64 /* NewProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectViewController.swift; sourceTree = "<group>"; };
+		E8946CDB2107CA9000351C64 /* DisplayProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayProjectViewController.swift; sourceTree = "<group>"; };
+		E8946CDD2107CB3D00351C64 /* NewProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectTableViewCell.swift; sourceTree = "<group>"; };
+		E8946CDF2107CB5200351C64 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E82981DA2108B1DF005240EC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E82981DB2108B1FC005240EC /* Date+ConverterToString.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E8946C882107944200351C64 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +98,72 @@
 		E8946C932107944200351C64 /* Koso */ = {
 			isa = PBXGroup;
 			children = (
+				E82981DA2108B1DF005240EC /* Extensions */,
+				E8946CD22107A69C00351C64 /* Storyboards */,
+				E8946CD12107A64F00351C64 /* Models */,
+				E8946CD02107A64800351C64 /* Helpers */,
+				E8946CCF2107A64200351C64 /* Views */,
+				E8946CCE2107A63100351C64 /* Controllers */,
 				E8946C942107944200351C64 /* AppDelegate.swift */,
 				E8946C962107944200351C64 /* ViewController.swift */,
-				E8946C982107944200351C64 /* Main.storyboard */,
 				E8946C9E2107944700351C64 /* Assets.xcassets */,
-				E8946CA02107944700351C64 /* LaunchScreen.storyboard */,
 				E8946CA32107944700351C64 /* Info.plist */,
-				E8946C9B2107944200351C64 /* Koso.xcdatamodeld */,
 			);
 			path = Koso;
+			sourceTree = "<group>";
+		};
+		E8946CCE2107A63100351C64 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E8946CD72107C9F300351C64 /* ProjectManagerViewController.swift */,
+				E8946CD92107CA0300351C64 /* NewProjectViewController.swift */,
+				E8946CDB2107CA9000351C64 /* DisplayProjectViewController.swift */,
+				E8780E252108EA4A00113C69 /* AddElements.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E8946CCF2107A64200351C64 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E8946CDD2107CB3D00351C64 /* NewProjectTableViewCell.swift */,
+				E8946CDF2107CB5200351C64 /* ProjectTableViewCell.swift */,
+				E8780E1D2108E8E400113C69 /* ToDoTableCellView.swift */,
+				E8780E1F2108E90000113C69 /* ListTableViewCell.swift */,
+				E8780E212108E91600113C69 /* NoteTableViewCell.swift */,
+				E8780E232108E92B00113C69 /* AgendaTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E8946CD02107A64800351C64 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E82981D521083A9E005240EC /* CoreDataHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E8946CD12107A64F00351C64 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E82981D72108AE08005240EC /* Koso.xcdatamodeld */,
+				E8780E272108ED3C00113C69 /* Element.swift */,
+				E8780E292108EE0A00113C69 /* ToDo.swift */,
+				E8780E2B2108EE3300113C69 /* Note.swift */,
+				E8780E2D2108EE4500113C69 /* Agenda.swift */,
+				E8780E2F2108EE7B00113C69 /* List.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E8946CD22107A69C00351C64 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E8946C982107944200351C64 /* Main.storyboard */,
+				E8946CA02107944700351C64 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +238,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8946C972107944200351C64 /* ViewController.swift in Sources */,
-				E8946C9D2107944200351C64 /* Koso.xcdatamodeld in Sources */,
+				E8780E222108E91600113C69 /* NoteTableViewCell.swift in Sources */,
+				E8780E282108ED3C00113C69 /* Element.swift in Sources */,
+				E8946CDC2107CA9000351C64 /* DisplayProjectViewController.swift in Sources */,
+				E8946CDE2107CB3D00351C64 /* NewProjectTableViewCell.swift in Sources */,
+				E8780E2E2108EE4500113C69 /* Agenda.swift in Sources */,
+				E8780E2C2108EE3300113C69 /* Note.swift in Sources */,
+				E8946CD82107C9F300351C64 /* ProjectManagerViewController.swift in Sources */,
+				E82981D92108AE08005240EC /* Koso.xcdatamodeld in Sources */,
+				E8780E202108E90000113C69 /* ListTableViewCell.swift in Sources */,
 				E8946C952107944200351C64 /* AppDelegate.swift in Sources */,
+				E82981D621083A9E005240EC /* CoreDataHelper.swift in Sources */,
+				E8780E2A2108EE0A00113C69 /* ToDo.swift in Sources */,
+				E8780E302108EE7B00113C69 /* List.swift in Sources */,
+				E8946CDA2107CA0300351C64 /* NewProjectViewController.swift in Sources */,
+				E8780E1E2108E8E400113C69 /* ToDoTableCellView.swift in Sources */,
+				E82981DC2108B1FC005240EC /* Date+ConverterToString.swift in Sources */,
+				E8946CE02107CB5200351C64 /* ProjectTableViewCell.swift in Sources */,
+				E8780E242108E92B00113C69 /* AgendaTableViewCell.swift in Sources */,
+				E8780E262108EA4A00113C69 /* AddElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,12 +456,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E8946C9B2107944200351C64 /* Koso.xcdatamodeld */ = {
+		E82981D72108AE08005240EC /* Koso.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E8946C9C2107944200351C64 /* Koso.xcdatamodel */,
+				E82981D82108AE08005240EC /* Koso.xcdatamodel */,
 			);
-			currentVersion = E8946C9C2107944200351C64 /* Koso.xcdatamodel */;
+			currentVersion = E82981D82108AE08005240EC /* Koso.xcdatamodel */;
 			path = Koso.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
