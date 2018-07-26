@@ -9,5 +9,10 @@
 import Foundation
 
 class ToDo: Element {
+    var tasks: [Task]
     
+    override init() {
+        tasks = [Task]()
+        super.init()
+    }
 }

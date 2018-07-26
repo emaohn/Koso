@@ -26,11 +26,17 @@ class ProjectManagerViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
+        
         switch identifier {
         case "newProject":
             print("creating new project")
+            
         case "openProject":
-            print("opening existing project")
+            guard let indexPath = projectTableView.indexPathForSelectedRow else {return}
+            let project = projects[indexPath.row]
+            let destination = segue.destination as! DisplayProjectViewController
+            destination.project = project
+            
         default:
             print("Error")
         }
@@ -44,6 +50,7 @@ extension ProjectManagerViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return projects.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "existingProject", for: indexPath) as! ProjectTableviewCell
         let project = projects[indexPath.row]
@@ -53,5 +60,9 @@ extension ProjectManagerViewController: UITableViewDelegate, UITableViewDataSour
         cell.projectDescriptionLabel.text = project.description
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "openProject", sender: self)
     }
 }

@@ -9,5 +9,11 @@
 import Foundation
 
 class Element {
+    var name: String?
     
+    init() {}
+    
+    init(name: String) {
+        self.name = name
+    }
 }

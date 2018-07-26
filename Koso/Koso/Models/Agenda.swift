@@ -9,5 +9,10 @@
 import Foundation
 
 class Agenda: Element {
+    var agenda: [TimePeriod]
     
+    override init() {
+        self.agenda = [TimePeriod]()
+        super.init()
+    }
 }

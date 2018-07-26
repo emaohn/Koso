@@ -196,14 +196,14 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem title="Save" id="Zba-DC-zy5">
-                                <connections>
-                                    <segue destination="hew-yA-KHN" kind="unwind" identifier="save" unwindAction="unwindWithSegue:" id="lWd-ay-iBH"/>
-                                </connections>
-                            </barButtonItem>
                             <barButtonItem title="Add" image="add" id="gKa-H3-3Nt">
                                 <connections>
                                     <segue destination="qJe-bc-csZ" kind="show" identifier="addItem" id="KYO-EN-wK3"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Save" id="Zba-DC-zy5">
+                                <connections>
+                                    <segue destination="hew-yA-KHN" kind="unwind" identifier="save" unwindAction="unwindWithSegue:" id="lWd-ay-iBH"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -348,7 +348,6 @@
                                             <outlet property="numDaysLeftLabel" destination="PjK-LN-VBZ" id="APQ-K0-4xl"/>
                                             <outlet property="projectDescriptionLabel" destination="wYD-mi-quU" id="k9Q-bV-zRh"/>
                                             <outlet property="titleLabel" destination="MyL-Xs-ndY" id="owQ-6v-Q36"/>
-                                            <segue destination="vnP-z0-zyf" kind="show" identifier="openProject" id="cCL-JN-uzo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -376,6 +375,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="projectTableView" destination="H3r-Ge-BoN" id="WNP-je-0ZY"/>
+                        <segue destination="vnP-z0-zyf" kind="show" identifier="openProject" id="OVQ-ou-vfh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2a7-Yh-OWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -408,6 +408,6 @@
         <image name="next" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bv6-3g-LL9"/>
+        <segue reference="OVQ-ou-vfh"/>
     </inferredMetricsTieBreakers>
 </document>
