@@ -14,13 +14,7 @@
 		E8780E202108E90000113C69 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E1F2108E90000113C69 /* ListTableViewCell.swift */; };
 		E8780E222108E91600113C69 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E212108E91600113C69 /* NoteTableViewCell.swift */; };
 		E8780E242108E92B00113C69 /* AgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E232108E92B00113C69 /* AgendaTableViewCell.swift */; };
-		E8780E262108EA4A00113C69 /* AddElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E252108EA4A00113C69 /* AddElements.swift */; };
-		E8780E282108ED3C00113C69 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E272108ED3C00113C69 /* Element.swift */; };
-		E8780E2A2108EE0A00113C69 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E292108EE0A00113C69 /* ToDo.swift */; };
-		E8780E2C2108EE3300113C69 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E2B2108EE3300113C69 /* Note.swift */; };
-		E8780E2E2108EE4500113C69 /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E2D2108EE4500113C69 /* Agenda.swift */; };
-		E8780E302108EE7B00113C69 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E2F2108EE7B00113C69 /* List.swift */; };
-		E8780E322109006500113C69 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E312109006500113C69 /* Task.swift */; };
+		E8780E262108EA4A00113C69 /* AddElementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E252108EA4A00113C69 /* AddElementsViewController.swift */; };
 		E8946C952107944200351C64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946C942107944200351C64 /* AppDelegate.swift */; };
 		E8946C972107944200351C64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946C962107944200351C64 /* ViewController.swift */; };
 		E8946C9A2107944200351C64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8946C982107944200351C64 /* Main.storyboard */; };
@@ -31,8 +25,6 @@
 		E8946CDC2107CA9000351C64 /* DisplayProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946CDB2107CA9000351C64 /* DisplayProjectViewController.swift */; };
 		E8946CDE2107CB3D00351C64 /* NewProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946CDD2107CB3D00351C64 /* NewProjectTableViewCell.swift */; };
 		E8946CE02107CB5200351C64 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946CDF2107CB5200351C64 /* ProjectTableViewCell.swift */; };
-		E8E9641A21091D5D00EED774 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E9641921091D5D00EED774 /* TimePeriod.swift */; };
-		E8E9641C2109219800EED774 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E9641B2109219800EED774 /* Plan.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,13 +35,7 @@
 		E8780E1F2108E90000113C69 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		E8780E212108E91600113C69 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		E8780E232108E92B00113C69 /* AgendaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaTableViewCell.swift; sourceTree = "<group>"; };
-		E8780E252108EA4A00113C69 /* AddElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddElements.swift; sourceTree = "<group>"; };
-		E8780E272108ED3C00113C69 /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
-		E8780E292108EE0A00113C69 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
-		E8780E2B2108EE3300113C69 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		E8780E2D2108EE4500113C69 /* Agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
-		E8780E2F2108EE7B00113C69 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
-		E8780E312109006500113C69 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		E8780E252108EA4A00113C69 /* AddElementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddElementsViewController.swift; sourceTree = "<group>"; };
 		E8946C912107944200351C64 /* Koso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8946C942107944200351C64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8946C962107944200351C64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,8 +48,6 @@
 		E8946CDB2107CA9000351C64 /* DisplayProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayProjectViewController.swift; sourceTree = "<group>"; };
 		E8946CDD2107CB3D00351C64 /* NewProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectTableViewCell.swift; sourceTree = "<group>"; };
 		E8946CDF2107CB5200351C64 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
-		E8E9641921091D5D00EED774 /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
-		E8E9641B2109219800EED774 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,9 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				E8946CD72107C9F300351C64 /* ProjectManagerViewController.swift */,
-				E8946CD92107CA0300351C64 /* NewProjectViewController.swift */,
 				E8946CDB2107CA9000351C64 /* DisplayProjectViewController.swift */,
-				E8780E252108EA4A00113C69 /* AddElements.swift */,
+				E8946CD92107CA0300351C64 /* NewProjectViewController.swift */,
+				E8780E252108EA4A00113C69 /* AddElementsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -154,14 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				E82981D72108AE08005240EC /* Koso.xcdatamodeld */,
-				E8780E272108ED3C00113C69 /* Element.swift */,
-				E8780E292108EE0A00113C69 /* ToDo.swift */,
-				E8780E2B2108EE3300113C69 /* Note.swift */,
-				E8780E2D2108EE4500113C69 /* Agenda.swift */,
-				E8780E2F2108EE7B00113C69 /* List.swift */,
-				E8780E312109006500113C69 /* Task.swift */,
-				E8E9641921091D5D00EED774 /* TimePeriod.swift */,
-				E8E9641B2109219800EED774 /* Plan.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -247,28 +223,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8946C972107944200351C64 /* ViewController.swift in Sources */,
-				E8E9641A21091D5D00EED774 /* TimePeriod.swift in Sources */,
 				E8780E222108E91600113C69 /* NoteTableViewCell.swift in Sources */,
-				E8780E282108ED3C00113C69 /* Element.swift in Sources */,
 				E8946CDC2107CA9000351C64 /* DisplayProjectViewController.swift in Sources */,
 				E8946CDE2107CB3D00351C64 /* NewProjectTableViewCell.swift in Sources */,
-				E8780E2E2108EE4500113C69 /* Agenda.swift in Sources */,
-				E8780E2C2108EE3300113C69 /* Note.swift in Sources */,
 				E8946CD82107C9F300351C64 /* ProjectManagerViewController.swift in Sources */,
 				E82981D92108AE08005240EC /* Koso.xcdatamodeld in Sources */,
 				E8780E202108E90000113C69 /* ListTableViewCell.swift in Sources */,
 				E8946C952107944200351C64 /* AppDelegate.swift in Sources */,
 				E82981D621083A9E005240EC /* CoreDataHelper.swift in Sources */,
-				E8780E2A2108EE0A00113C69 /* ToDo.swift in Sources */,
-				E8780E302108EE7B00113C69 /* List.swift in Sources */,
 				E8946CDA2107CA0300351C64 /* NewProjectViewController.swift in Sources */,
 				E8780E1E2108E8E400113C69 /* ToDoTableCellView.swift in Sources */,
 				E82981DC2108B1FC005240EC /* Date+ConverterToString.swift in Sources */,
 				E8946CE02107CB5200351C64 /* ProjectTableViewCell.swift in Sources */,
 				E8780E242108E92B00113C69 /* AgendaTableViewCell.swift in Sources */,
-				E8E9641C2109219800EED774 /* Plan.swift in Sources */,
-				E8780E322109006500113C69 /* Task.swift in Sources */,
-				E8780E262108EA4A00113C69 /* AddElements.swift in Sources */,
+				E8780E262108EA4A00113C69 /* AddElementsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

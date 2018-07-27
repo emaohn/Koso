@@ -32,10 +32,11 @@ class ProjectManagerViewController: UIViewController {
             print("creating new project")
             
         case "openProject":
+            print("opening project")
             guard let indexPath = projectTableView.indexPathForSelectedRow else {return}
             let project = projects[indexPath.row]
-            let destination = segue.destination as! DisplayProjectViewController
-            destination.project = project
+            let destination = segue.destination as? DisplayProjectViewController
+            destination?.project = project
             
         default:
             print("Error")

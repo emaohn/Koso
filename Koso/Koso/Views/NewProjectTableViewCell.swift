@@ -10,5 +10,12 @@ import Foundation
 import UIKit
 
 class NewProjectTableViewCell: UITableViewCell {
+    var project = Project()
     
+    func test(){
+     var task = Task()
+        
+        
+        
+    }
 }

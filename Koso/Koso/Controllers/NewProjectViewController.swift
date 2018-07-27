@@ -25,11 +25,15 @@ class NewProjectViewController: UIViewController {
         guard let identifier = segue.identifier else {return}
         switch identifier {
         case "beginProject":
+            print("Creating new project")
             let project = CoreDataHelper.newProject()
             
             project.name = projectNameTextField.text
             project.projectDescription = projectDescriptionTextField.text
             project.dueDate = deadlineDatePicker.date
+            
+            let destination = segue.destination as? DisplayProjectViewController
+            destination?.project = project
             
             CoreDataHelper.saveProject()
         case "cancelNewProject":
