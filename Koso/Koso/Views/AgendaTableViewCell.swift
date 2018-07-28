@@ -10,5 +10,8 @@ import Foundation
 import UIKit
 
 class AgendaTableViewCell: UITableViewCell {
+    @IBOutlet weak var timeIntervalLabel: UILabel!
+    @IBOutlet weak var startDateLabel: UILabel!
+    @IBOutlet weak var endDateLabel: UILabel!
     
 }

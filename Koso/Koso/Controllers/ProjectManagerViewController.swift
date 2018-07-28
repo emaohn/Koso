@@ -20,7 +20,7 @@ class ProjectManagerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+ 
         projects = CoreDataHelper.retrieveProjects()
     }
     

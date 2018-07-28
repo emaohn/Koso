@@ -12,9 +12,14 @@ import UIKit
 class DisplayProjectViewController: UIViewController {
     var project: Project?
     
-    let projects = [Project]()
+    var elements: [Element]?
     
     @IBOutlet weak var elementsTableView: UITableView!
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var titleLabel: UITextField!
+    @IBOutlet weak var deadlineLabel: UILabel!
+    @IBOutlet weak var numDaysLeftLabel: UILabel!
+    @IBOutlet weak var projectDescriptionLabel: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,19 +46,24 @@ class DisplayProjectViewController: UIViewController {
 
 extension DisplayProjectViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDo", for: indexPath) as! ToDoTableViewCell
-//        let project = projects[indexPath.row]
-//        cell.titleLabel.text = project.name
-//        cell.dueDateLabel.text = project.dueDate?.convertToString()
-//        cell.numDaysLeftLabel.text = String(project.numDaysLeft)
-//        cell.projectDescriptionLabel.text = project.description
-        return cell
+        let element = elements?[indexPath.row]
+        if let element = element as? ToDo {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "todo", for: indexPath) as! ToDoTableViewCell
+            return cell
+        } else if let element = element as? List {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "list", for: indexPath) as! ListTableViewCell
+            return cell
+        } else if let element = element as? Agenda {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "agenda", for: indexPath) as! AgendaTableViewCell
+            return cell
+        } else if let element = element as? Note {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "note", for: indexPath) as! NoteTableViewCell
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // FIXME: change this to the count of the array
-//        items.count
-        return projects.count
+        return (elements?.count)!
     }
     
 }

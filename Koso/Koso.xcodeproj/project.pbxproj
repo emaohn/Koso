@@ -25,6 +25,10 @@
 		E8946CDC2107CA9000351C64 /* DisplayProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946CDB2107CA9000351C64 /* DisplayProjectViewController.swift */; };
 		E8946CDE2107CB3D00351C64 /* NewProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946CDD2107CB3D00351C64 /* NewProjectTableViewCell.swift */; };
 		E8946CE02107CB5200351C64 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8946CDF2107CB5200351C64 /* ProjectTableViewCell.swift */; };
+		E8E6B516210BBC47006C117E /* DisplayToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E6B515210BBC47006C117E /* DisplayToDoViewController.swift */; };
+		E8E6B518210BBC4F006C117E /* DisplayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E6B517210BBC4F006C117E /* DisplayListViewController.swift */; };
+		E8E6B51A210BBC61006C117E /* DisplayAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E6B519210BBC61006C117E /* DisplayAgendaViewController.swift */; };
+		E8E6B51C210BBC69006C117E /* DisplayNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E6B51B210BBC69006C117E /* DisplayNoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,10 @@
 		E8946CDB2107CA9000351C64 /* DisplayProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayProjectViewController.swift; sourceTree = "<group>"; };
 		E8946CDD2107CB3D00351C64 /* NewProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectTableViewCell.swift; sourceTree = "<group>"; };
 		E8946CDF2107CB5200351C64 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		E8E6B515210BBC47006C117E /* DisplayToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayToDoViewController.swift; sourceTree = "<group>"; };
+		E8E6B517210BBC4F006C117E /* DisplayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayListViewController.swift; sourceTree = "<group>"; };
+		E8E6B519210BBC61006C117E /* DisplayAgendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAgendaViewController.swift; sourceTree = "<group>"; };
+		E8E6B51B210BBC69006C117E /* DisplayNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +117,10 @@
 				E8946CDB2107CA9000351C64 /* DisplayProjectViewController.swift */,
 				E8946CD92107CA0300351C64 /* NewProjectViewController.swift */,
 				E8780E252108EA4A00113C69 /* AddElementsViewController.swift */,
+				E8E6B515210BBC47006C117E /* DisplayToDoViewController.swift */,
+				E8E6B517210BBC4F006C117E /* DisplayListViewController.swift */,
+				E8E6B519210BBC61006C117E /* DisplayAgendaViewController.swift */,
+				E8E6B51B210BBC69006C117E /* DisplayNoteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -227,12 +239,16 @@
 				E8946CDC2107CA9000351C64 /* DisplayProjectViewController.swift in Sources */,
 				E8946CDE2107CB3D00351C64 /* NewProjectTableViewCell.swift in Sources */,
 				E8946CD82107C9F300351C64 /* ProjectManagerViewController.swift in Sources */,
+				E8E6B51C210BBC69006C117E /* DisplayNoteViewController.swift in Sources */,
+				E8E6B516210BBC47006C117E /* DisplayToDoViewController.swift in Sources */,
+				E8E6B518210BBC4F006C117E /* DisplayListViewController.swift in Sources */,
 				E82981D92108AE08005240EC /* Koso.xcdatamodeld in Sources */,
 				E8780E202108E90000113C69 /* ListTableViewCell.swift in Sources */,
 				E8946C952107944200351C64 /* AppDelegate.swift in Sources */,
 				E82981D621083A9E005240EC /* CoreDataHelper.swift in Sources */,
 				E8946CDA2107CA0300351C64 /* NewProjectViewController.swift in Sources */,
 				E8780E1E2108E8E400113C69 /* ToDoTableCellView.swift in Sources */,
+				E8E6B51A210BBC61006C117E /* DisplayAgendaViewController.swift in Sources */,
 				E82981DC2108B1FC005240EC /* Date+ConverterToString.swift in Sources */,
 				E8946CE02107CB5200351C64 /* ProjectTableViewCell.swift in Sources */,
 				E8780E242108E92B00113C69 /* AgendaTableViewCell.swift in Sources */,

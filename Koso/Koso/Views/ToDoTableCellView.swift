@@ -10,5 +10,7 @@ import Foundation
 import UIKit
 
 class ToDoTableViewCell: UITableViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dueDateLabel: UILabel!
     
 }
