@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class DisplayListViewController: UIViewController {
+    var list: List?
     
     override func viewDidLoad() {
         super.viewDidLoad()

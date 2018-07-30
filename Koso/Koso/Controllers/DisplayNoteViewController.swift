@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class DisplayNoteViewController: UIViewController {
+    var note: Note?
     
     override func viewDidLoad() {
         super.viewDidLoad()

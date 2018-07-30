@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class DisplayAgendaViewController: UIViewController {
+    var agenda: Agenda?
     
     override func viewDidLoad() {
         super.viewDidLoad()

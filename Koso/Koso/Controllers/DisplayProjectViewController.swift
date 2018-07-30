@@ -12,7 +12,11 @@ import UIKit
 class DisplayProjectViewController: UIViewController {
     var project: Project?
     
-    var elements: [Element]?
+    var elements = [Element]() {
+        didSet {
+            elementsTableView.reloadData()
+        }
+    }
     
     @IBOutlet weak var elementsTableView: UITableView!
     @IBOutlet weak var headerView: UIView!
@@ -23,6 +27,15 @@ class DisplayProjectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = project?.name
+        deadlineLabel.text = project?.dueDate?.convertToString()
+        numDaysLeftLabel.text = "\(project?.numDaysLeft)"
+        projectDescriptionLabel.text = project?.projectDescription
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        elements = project?.element?.allObjects as! [Element]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -34,36 +47,54 @@ class DisplayProjectViewController: UIViewController {
             CoreDataHelper.saveProject()
         case "back":
             print("boing back to main page")
+        case "openAgenda":
+            let destination = segue.destination as? DisplayAgendaViewController
+        case "openList":
+            let destination = segue.destination as? DisplayListViewController
+        case "openNote":
+            let destination = segue.destination as? DisplayNoteViewController
+        case "openToDo":
+            let destination = segue.destination as? DisplayToDoViewController
         default:
             print("error")
         }
     }
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
-
+        elements = project?.element?.allObjects as! [Element]
     }
 }
 
 extension DisplayProjectViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 175
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let element = elements?[indexPath.row]
-        if let element = element as? ToDo {
+        let element = elements[indexPath.row]
+        if let _ = element as? ToDo {
             let cell = tableView.dequeueReusableCell(withIdentifier: "todo", for: indexPath) as! ToDoTableViewCell
             return cell
-        } else if let element = element as? List {
+        } else if let _ = element as? List {
             let cell = tableView.dequeueReusableCell(withIdentifier: "list", for: indexPath) as! ListTableViewCell
             return cell
-        } else if let element = element as? Agenda {
+        } else if let _ = element as? Agenda {
             let cell = tableView.dequeueReusableCell(withIdentifier: "agenda", for: indexPath) as! AgendaTableViewCell
             return cell
-        } else if let element = element as? Note {
+        } else if let _ = element as? Note {
             let cell = tableView.dequeueReusableCell(withIdentifier: "note", for: indexPath) as! NoteTableViewCell
             return cell
         }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (elements?.count)!
+        return (elements.count)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        <#code#>
     }
     
 }

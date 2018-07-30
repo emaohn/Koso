@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class DisplayToDoViewController: UIViewController {
+    var todo: ToDo?
     
     override func viewDidLoad() {
         super.viewDidLoad()

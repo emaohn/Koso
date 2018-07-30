@@ -22,12 +22,15 @@ class AddElementsViewController: UIViewController {
     @IBAction func addToDoButtonPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "addedToDo", sender: self)
     }
+    
     @IBAction func addListButtonPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "addedList", sender: self)
     }
+    
     @IBAction func addAgendaButtonPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "addedAgenda", sender: self)
     }
+    
     @IBAction func addNoteButtonPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "addedNote", sender: self)
     }
@@ -37,21 +40,25 @@ class AddElementsViewController: UIViewController {
         
         switch identifier {
         case "addedToDo":
-            let todo = ToDo()
+            let todo = CoreDataHelper.newToDo()
             let destination =  segue.destination as? DisplayProjectViewController
             destination?.project?.addToElement(todo)
+            CoreDataHelper.saveProject()
         case "addedList":
-            let list = List()
+            let list = CoreDataHelper.newList()
             let destination =  segue.destination as? DisplayProjectViewController
             destination?.project?.addToElement(list)
+            CoreDataHelper.saveProject()
         case "addedAgenda":
-            let agenda = Agenda()
+            let agenda = CoreDataHelper.newAgenda()
             let destination =  segue.destination as? DisplayProjectViewController
             destination?.project?.addToElement(agenda)
+            CoreDataHelper.saveProject()
         case "addedNote":
-            let note = Note()
+            let note = CoreDataHelper.newNote()
             let destination =  segue.destination as? DisplayProjectViewController
             destination?.project?.addToElement(note)
+            CoreDataHelper.saveProject()
         default:
             print("error")
         }

@@ -23,9 +23,50 @@ struct CoreDataHelper {
     }()
     
     static func newProject() -> Project {
-        let note = NSEntityDescription.insertNewObject(forEntityName: "Project", into: context) as! Project
+        let project = NSEntityDescription.insertNewObject(forEntityName: "Project", into: context) as! Project
+        return project
+    }
+    
+    static func newAgenda() -> Agenda {
+        let agenda = NSEntityDescription.insertNewObject(forEntityName: "Agenda", into: context) as! Agenda
+        return agenda
+    }
+    
+    static func newList() -> List {
+        let list = NSEntityDescription.insertNewObject(forEntityName: "List", into: context) as! List
+        return list
+    }
+    
+    static func newListItem() -> ListItem {
+        let listItem = NSEntityDescription.insertNewObject(forEntityName: "ListItem", into: context) as! ListItem
+        return listItem
+    }
+    
+    static func newNote() -> Note {
+        let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as! Note
         return note
     }
+    
+    static func newPlan() -> Plan {
+        let plan = NSEntityDescription.insertNewObject(forEntityName: "Plan", into: context) as! Plan
+        return plan
+    }
+    
+    static func newTask() -> Task {
+        let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: context) as! Task
+        return task
+    }
+    
+    static func newTimePeriod() -> TimePeriod {
+        let timePeriod = NSEntityDescription.insertNewObject(forEntityName: "TimePeriod", into: context) as! TimePeriod
+        return timePeriod
+    }
+    
+    static func newToDo() -> ToDo {
+        let todo = NSEntityDescription.insertNewObject(forEntityName: "ToDo", into: context) as! ToDo
+        return todo
+    }
+    
     
     static func saveProject() {
         do {
@@ -40,11 +81,22 @@ struct CoreDataHelper {
         saveProject()
     }
     
-    static func retrieveProjects() -> [Project]{
+    static func retrieveProjects() -> [Project] {
         do {
             let fetchRequest = NSFetchRequest<Project>(entityName: "Project")
             let results = try context.fetch(fetchRequest)
             return results.reversed()
+        } catch let error {
+            print("Could not save \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    static func retrieveElements() -> [Element] {
+        do {
+            let fetchRequest = NSFetchRequest<Element>(entityName: "Element")
+            let results = try context.fetch(fetchRequest)
+            return results
         } catch let error {
             print("Could not save \(error.localizedDescription)")
             return []

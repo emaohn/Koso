@@ -436,6 +436,10 @@
                                                                 </connections>
                                                             </tableViewCell>
                                                         </prototypes>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="vnP-z0-zyf" id="OOK-gw-Bh5"/>
+                                                            <outlet property="delegate" destination="vnP-z0-zyf" id="zGl-FF-JA4"/>
+                                                        </connections>
                                                     </tableView>
                                                 </subviews>
                                             </stackView>

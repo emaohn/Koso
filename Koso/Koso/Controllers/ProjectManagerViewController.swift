@@ -58,7 +58,7 @@ extension ProjectManagerViewController: UITableViewDelegate, UITableViewDataSour
         cell.titleLabel.text = project.name
         cell.dueDateLabel.text = project.dueDate?.convertToString()
         cell.numDaysLeftLabel.text = String(project.numDaysLeft)
-        cell.projectDescriptionLabel.text = project.description
+        cell.projectDescriptionLabel.text = project.projectDescription
         
         return cell
     }
