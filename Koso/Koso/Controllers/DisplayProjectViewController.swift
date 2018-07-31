@@ -11,6 +11,7 @@ import UIKit
 
 class DisplayProjectViewController: UIViewController {
     var project: Project?
+    var element: Element?
     
     var elements = [Element]() {
         didSet {
@@ -49,12 +50,16 @@ class DisplayProjectViewController: UIViewController {
             print("boing back to main page")
         case "openAgenda":
             let destination = segue.destination as? DisplayAgendaViewController
+            destination?.agenda = element as? Agenda
         case "openList":
             let destination = segue.destination as? DisplayListViewController
+            destination?.list = element as? List
         case "openNote":
             let destination = segue.destination as? DisplayNoteViewController
+            destination?.note = element as? Note
         case "openToDo":
             let destination = segue.destination as? DisplayToDoViewController
+            destination?.todo = element as? ToDo
         default:
             print("error")
         }
@@ -94,7 +99,24 @@ extension DisplayProjectViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        element = elements[indexPath.row]
+        if let _ = element as? ToDo {
+            self.performSegue(withIdentifier: "openToDo", sender: self)
+        } else if let _ = element as? List {
+            self.performSegue(withIdentifier: "openList", sender: self)
+        } else if let _ = element as? Agenda {
+            self.performSegue(withIdentifier: "openAgenda", sender: self)
+        } else if let _ = element as? Note {
+            self.performSegue(withIdentifier: "openNote", sender: self)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let deletedElement = elements[indexPath.row]
+            CoreDataHelper.delete(element: deletedElement)
+            elements = project?.element?.allObjects as! [Element]
+        }
     }
     
 }

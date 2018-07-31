@@ -20,7 +20,7 @@ class ProjectManagerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        
         projects = CoreDataHelper.retrieveProjects()
     }
     
@@ -65,5 +65,13 @@ extension ProjectManagerViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "openProject", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let deletedProject = projects[indexPath.row]
+            CoreDataHelper.delete(project: deletedProject)
+            projects = CoreDataHelper.retrieveProjects()
+        }
     }
 }

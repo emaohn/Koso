@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class AddElementsViewController: UIViewController {
+    var selectedElement: Element?
+    
     @IBOutlet weak var addToDoButton: UIButton!
     @IBOutlet weak var addListButton: UIButton!
     @IBOutlet weak var addAgendaButton: UIButton!
@@ -20,44 +22,30 @@ class AddElementsViewController: UIViewController {
     }
     
     @IBAction func addToDoButtonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "addedToDo", sender: self)
+        selectedElement = CoreDataHelper.newToDo()
+        self.performSegue(withIdentifier: "backToDisplayProject", sender: self)
     }
     
     @IBAction func addListButtonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "addedList", sender: self)
+        selectedElement = CoreDataHelper.newList()
+        self.performSegue(withIdentifier: "backToDisplayProject", sender: self)
     }
     
     @IBAction func addAgendaButtonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "addedAgenda", sender: self)
-    }
+        selectedElement = CoreDataHelper.newAgenda()
+        self.performSegue(withIdentifier: "backToDisplayProject", sender: self)    }
     
     @IBAction func addNoteButtonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "addedNote", sender: self)
-    }
+        selectedElement = CoreDataHelper.newNote()
+        self.performSegue(withIdentifier: "backToDisplayProject", sender: self)    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         
         switch identifier {
-        case "addedToDo":
-            let todo = CoreDataHelper.newToDo()
-            let destination =  segue.destination as? DisplayProjectViewController
-            destination?.project?.addToElement(todo)
-            CoreDataHelper.saveProject()
-        case "addedList":
-            let list = CoreDataHelper.newList()
-            let destination =  segue.destination as? DisplayProjectViewController
-            destination?.project?.addToElement(list)
-            CoreDataHelper.saveProject()
-        case "addedAgenda":
-            let agenda = CoreDataHelper.newAgenda()
-            let destination =  segue.destination as? DisplayProjectViewController
-            destination?.project?.addToElement(agenda)
-            CoreDataHelper.saveProject()
-        case "addedNote":
-            let note = CoreDataHelper.newNote()
-            let destination =  segue.destination as? DisplayProjectViewController
-            destination?.project?.addToElement(note)
+        case "backToDisplayProject":
+            let destination = segue.destination as? DisplayProjectViewController
+            destination?.project?.addToElement(selectedElement!)
             CoreDataHelper.saveProject()
         default:
             print("error")

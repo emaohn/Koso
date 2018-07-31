@@ -76,8 +76,13 @@ struct CoreDataHelper {
         }
     }
     
-    static func delete(note: Project) {
-        context.delete(note)
+    static func delete(project: Project) {
+        context.delete(project)
+        saveProject()
+    }
+    
+    static func delete(element: Element) {
+        context.delete(element)
         saveProject()
     }
     
@@ -86,17 +91,6 @@ struct CoreDataHelper {
             let fetchRequest = NSFetchRequest<Project>(entityName: "Project")
             let results = try context.fetch(fetchRequest)
             return results.reversed()
-        } catch let error {
-            print("Could not save \(error.localizedDescription)")
-            return []
-        }
-    }
-    
-    static func retrieveElements() -> [Element] {
-        do {
-            let fetchRequest = NSFetchRequest<Element>(entityName: "Element")
-            let results = try context.fetch(fetchRequest)
-            return results
         } catch let error {
             print("Could not save \(error.localizedDescription)")
             return []
