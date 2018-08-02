@@ -52,16 +52,6 @@ struct CoreDataHelper {
         return plan
     }
     
-    static func newTask() -> Task {
-        let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: context) as! Task
-        return task
-    }
-    
-    static func newTimePeriod() -> TimePeriod {
-        let timePeriod = NSEntityDescription.insertNewObject(forEntityName: "TimePeriod", into: context) as! TimePeriod
-        return timePeriod
-    }
-    
     static func newToDo() -> ToDo {
         let todo = NSEntityDescription.insertNewObject(forEntityName: "ToDo", into: context) as! ToDo
         return todo

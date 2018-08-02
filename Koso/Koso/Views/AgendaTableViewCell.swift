@@ -13,5 +13,5 @@ class AgendaTableViewCell: UITableViewCell {
     @IBOutlet weak var timeIntervalLabel: UILabel!
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
-    
+    @IBOutlet weak var plansLabel: UILabel!
 }

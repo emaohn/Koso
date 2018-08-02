@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Agenda" representedClassName="Agenda" parentEntity="Element" syncable="YES" codeGenerationType="class">
+        <attribute name="end" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="start" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeInterval" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="plan" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Plan" inverseName="agenda" inverseEntity="Plan" syncable="YES"/>
-        <relationship name="timePeriod" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimePeriod" inverseName="agenda" inverseEntity="TimePeriod" syncable="YES"/>
     </entity>
     <entity name="Element" representedClassName="Element" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,9 +20,11 @@
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Plan" representedClassName="Plan" syncable="YES" codeGenerationType="class">
-        <attribute name="endTime" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="startTime" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="agenda" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Agenda" inverseName="plan" inverseEntity="Agenda" syncable="YES"/>
     </entity>
     <entity name="Project" representedClassName="Project" syncable="YES" codeGenerationType="class">
@@ -30,27 +34,18 @@
         <attribute name="projectDescription" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="element" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Element" inverseName="project" inverseEntity="Element" syncable="YES"/>
     </entity>
-    <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
-        <relationship name="task" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="task" inverseEntity="Task" syncable="YES"/>
-        <relationship name="todo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ToDo" inverseName="task" inverseEntity="ToDo" syncable="YES"/>
-    </entity>
-    <entity name="TimePeriod" representedClassName="TimePeriod" syncable="YES" codeGenerationType="class">
-        <attribute name="length" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="agenda" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Agenda" inverseName="timePeriod" inverseEntity="Agenda" syncable="YES"/>
-    </entity>
     <entity name="ToDo" representedClassName="ToDo" parentEntity="Element" syncable="YES" codeGenerationType="class">
-        <relationship name="task" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="todo" inverseEntity="Task" syncable="YES"/>
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="toDo" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ToDo" inverseName="toDo" inverseEntity="ToDo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Project" positionX="61" positionY="-100" width="128" height="118"/>
+        <element name="Agenda" positionX="-164" positionY="53" width="128" height="105"/>
         <element name="Element" positionX="-90" positionY="-135" width="128" height="73"/>
-        <element name="ToDo" positionX="-92" positionY="135" width="128" height="58"/>
-        <element name="Note" positionX="-227" positionY="-45" width="128" height="58"/>
-        <element name="Agenda" positionX="-164" positionY="53" width="128" height="73"/>
         <element name="List" positionX="27" positionY="44" width="128" height="58"/>
-        <element name="Task" positionX="-83" positionY="216" width="128" height="73"/>
-        <element name="Plan" positionX="-369" positionY="54" width="128" height="103"/>
-        <element name="TimePeriod" positionX="-236" positionY="167" width="128" height="73"/>
         <element name="ListItem" positionX="63" positionY="146" width="128" height="58"/>
+        <element name="Note" positionX="-227" positionY="-45" width="128" height="58"/>
+        <element name="Plan" positionX="-369" positionY="54" width="128" height="135"/>
+        <element name="Project" positionX="79" positionY="-100" width="128" height="118"/>
+        <element name="ToDo" positionX="-81" positionY="176" width="128" height="73"/>
     </elements>
 </model>

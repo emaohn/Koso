@@ -12,7 +12,22 @@ import UIKit
 class DisplayNoteViewController: UIViewController {
     var note: Note?
     
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var noteTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else { return }
+        switch identifier {
+        case "saveNote":
+            note?.note = noteTextView.text
+            note?.title = titleTextField.text
+            CoreDataHelper.saveProject()
+        default:
+            print("error")
+        }
     }
 }

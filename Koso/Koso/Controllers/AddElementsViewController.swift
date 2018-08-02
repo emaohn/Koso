@@ -37,7 +37,11 @@ class AddElementsViewController: UIViewController {
     
     @IBAction func addNoteButtonPressed(_ sender: UIButton) {
         selectedElement = CoreDataHelper.newNote()
+        
         self.performSegue(withIdentifier: "backToDisplayProject", sender: self)    }
+    @IBAction func cancelNewElementButtonPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "cancel", sender: self)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
@@ -45,8 +49,12 @@ class AddElementsViewController: UIViewController {
         switch identifier {
         case "backToDisplayProject":
             let destination = segue.destination as? DisplayProjectViewController
-            destination?.project?.addToElement(selectedElement!)
-            CoreDataHelper.saveProject()
+            if let element = selectedElement {
+                destination?.project?.addToElement(element)
+                CoreDataHelper.saveProject()
+            } else { return }
+        case "cancel":
+            print("canceling")
         default:
             print("error")
         }

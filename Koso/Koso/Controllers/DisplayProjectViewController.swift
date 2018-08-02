@@ -30,7 +30,7 @@ class DisplayProjectViewController: UIViewController {
         super.viewDidLoad()
         titleLabel.text = project?.name
         deadlineLabel.text = project?.dueDate?.convertToString()
-        numDaysLeftLabel.text = "\(project?.numDaysLeft)"
+        numDaysLeftLabel.text = "\(String(describing: project?.numDaysLeft))"
         projectDescriptionLabel.text = project?.projectDescription
     }
     
@@ -59,7 +59,7 @@ class DisplayProjectViewController: UIViewController {
             destination?.note = element as? Note
         case "openToDo":
             let destination = segue.destination as? DisplayToDoViewController
-            destination?.todo = element as? ToDo
+            destination?.todo = (element as? ToDo)!
         default:
             print("error")
         }
@@ -84,11 +84,23 @@ extension DisplayProjectViewController: UITableViewDelegate, UITableViewDataSour
         } else if let _ = element as? List {
             let cell = tableView.dequeueReusableCell(withIdentifier: "list", for: indexPath) as! ListTableViewCell
             return cell
-        } else if let _ = element as? Agenda {
+        } else if let agenda = element as? Agenda {
             let cell = tableView.dequeueReusableCell(withIdentifier: "agenda", for: indexPath) as! AgendaTableViewCell
+            cell.timeIntervalLabel.text = agenda.timeInterval
+            cell.startDateLabel.text = agenda.start
+            cell.endDateLabel.text = agenda.end
+            var planLabel: String = "Plans: "
+            for plan in (agenda.plan?.allObjects as? [Plan])! {
+                planLabel += " \(String(describing: plan.title))"
+            }
+            cell.plansLabel.text = planLabel
             return cell
-        } else if let _ = element as? Note {
+        } else if let note = element as? Note {
             let cell = tableView.dequeueReusableCell(withIdentifier: "note", for: indexPath) as! NoteTableViewCell
+            cell.titleLabel.text = note.title
+            if let note = note.note {
+                cell.noteLabel.text = note
+            }
             return cell
         }
         return UITableViewCell()
