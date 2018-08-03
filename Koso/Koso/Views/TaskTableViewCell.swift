@@ -10,5 +10,5 @@ import Foundation
 import UIKit
 
 class TaskTableViewCell: UITableViewCell {
-    
+    @IBOutlet weak var taskTextField: UITextField!
 }

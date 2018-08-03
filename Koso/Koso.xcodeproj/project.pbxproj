@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E80661802114D15C00A134BE /* PhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E806617F2114D15C00A134BE /* PhotoHelper.swift */; };
+		E8066185211500F100A134BE /* ToDoBreakdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8066184211500F100A134BE /* ToDoBreakdownViewController.swift */; };
 		E82981D621083A9E005240EC /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82981D521083A9E005240EC /* CoreDataHelper.swift */; };
 		E82981D92108AE08005240EC /* Koso.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E82981D72108AE08005240EC /* Koso.xcdatamodeld */; };
 		E82981DC2108B1FC005240EC /* Date+ConverterToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82981DB2108B1FC005240EC /* Date+ConverterToString.swift */; };
 		E837EE5021139A66000A1CED /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837EE4F21139A66000A1CED /* TaskTableViewCell.swift */; };
 		E8780E1E2108E8E400113C69 /* ToDoTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E1D2108E8E400113C69 /* ToDoTableCellView.swift */; };
-		E8780E202108E90000113C69 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E1F2108E90000113C69 /* ListTableViewCell.swift */; };
+		E8780E202108E90000113C69 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E1F2108E90000113C69 /* ImageCell.swift */; };
 		E8780E222108E91600113C69 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E212108E91600113C69 /* NoteTableViewCell.swift */; };
 		E8780E242108E92B00113C69 /* AgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E232108E92B00113C69 /* AgendaTableViewCell.swift */; };
 		E8780E262108EA4A00113C69 /* AddElementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E252108EA4A00113C69 /* AddElementsViewController.swift */; };
@@ -34,12 +36,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E806617F2114D15C00A134BE /* PhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHelper.swift; sourceTree = "<group>"; };
+		E8066184211500F100A134BE /* ToDoBreakdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoBreakdownViewController.swift; sourceTree = "<group>"; };
 		E82981D521083A9E005240EC /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		E82981D82108AE08005240EC /* Koso.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Koso.xcdatamodel; sourceTree = "<group>"; };
 		E82981DB2108B1FC005240EC /* Date+ConverterToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ConverterToString.swift"; sourceTree = "<group>"; };
 		E837EE4F21139A66000A1CED /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		E8780E1D2108E8E400113C69 /* ToDoTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableCellView.swift; sourceTree = "<group>"; };
-		E8780E1F2108E90000113C69 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		E8780E1F2108E90000113C69 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		E8780E212108E91600113C69 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		E8780E232108E92B00113C69 /* AgendaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaTableViewCell.swift; sourceTree = "<group>"; };
 		E8780E252108EA4A00113C69 /* AddElementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddElementsViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +77,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E80661812114F56800A134BE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		E82981DA2108B1DF005240EC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +111,7 @@
 		E8946C932107944200351C64 /* Koso */ = {
 			isa = PBXGroup;
 			children = (
+				E80661812114F56800A134BE /* Services */,
 				E82981DA2108B1DF005240EC /* Extensions */,
 				E8946CD22107A69C00351C64 /* Storyboards */,
 				E8946CD12107A64F00351C64 /* Models */,
@@ -125,6 +137,7 @@
 				E8E6B517210BBC4F006C117E /* DisplayListViewController.swift */,
 				E8E6B519210BBC61006C117E /* DisplayAgendaViewController.swift */,
 				E8E6B51B210BBC69006C117E /* DisplayNoteViewController.swift */,
+				E8066184211500F100A134BE /* ToDoBreakdownViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -135,7 +148,7 @@
 				E8946CDD2107CB3D00351C64 /* NewProjectTableViewCell.swift */,
 				E8946CDF2107CB5200351C64 /* ProjectTableViewCell.swift */,
 				E8780E1D2108E8E400113C69 /* ToDoTableCellView.swift */,
-				E8780E1F2108E90000113C69 /* ListTableViewCell.swift */,
+				E8780E1F2108E90000113C69 /* ImageCell.swift */,
 				E8780E212108E91600113C69 /* NoteTableViewCell.swift */,
 				E8780E232108E92B00113C69 /* AgendaTableViewCell.swift */,
 				E8E6B51D2111F5D6006C117E /* PlanTableViewCell.swift */,
@@ -148,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				E82981D521083A9E005240EC /* CoreDataHelper.swift */,
+				E806617F2114D15C00A134BE /* PhotoHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -240,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8066185211500F100A134BE /* ToDoBreakdownViewController.swift in Sources */,
 				E8946C972107944200351C64 /* ViewController.swift in Sources */,
 				E8780E222108E91600113C69 /* NoteTableViewCell.swift in Sources */,
 				E8946CDC2107CA9000351C64 /* DisplayProjectViewController.swift in Sources */,
@@ -251,9 +266,10 @@
 				E8E6B516210BBC47006C117E /* DisplayToDoViewController.swift in Sources */,
 				E8E6B518210BBC4F006C117E /* DisplayListViewController.swift in Sources */,
 				E82981D92108AE08005240EC /* Koso.xcdatamodeld in Sources */,
-				E8780E202108E90000113C69 /* ListTableViewCell.swift in Sources */,
+				E8780E202108E90000113C69 /* ImageCell.swift in Sources */,
 				E8946C952107944200351C64 /* AppDelegate.swift in Sources */,
 				E82981D621083A9E005240EC /* CoreDataHelper.swift in Sources */,
+				E80661802114D15C00A134BE /* PhotoHelper.swift in Sources */,
 				E8946CDA2107CA0300351C64 /* NewProjectViewController.swift in Sources */,
 				E8780E1E2108E8E400113C69 /* ToDoTableCellView.swift in Sources */,
 				E8E6B51A210BBC61006C117E /* DisplayAgendaViewController.swift in Sources */,

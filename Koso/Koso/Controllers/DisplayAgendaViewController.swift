@@ -11,7 +11,7 @@ import UIKit
 
 class DisplayAgendaViewController: UIViewController {
     var agenda: Agenda?
-    var plans: [Plan]?
+    var plans = [Plan]()
     
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var startTimeTextField: UITextField!
@@ -29,6 +29,7 @@ class DisplayAgendaViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadPlans()
+        setup()
     }
     
     func setup() {
@@ -37,41 +38,65 @@ class DisplayAgendaViewController: UIViewController {
         endTimeTextField.text = agenda?.end
     }
     
+    func createNewPlan(){
+       let plan = CoreDataHelper.newPlan()
+        plan.title = ""
+        plan.details = ""
+        plan.endTime = ""
+        plan.startTime = ""
+        plan.timeStamp = Date()
+        plan.location = ""
+       agenda?.addToPlan(plan)
+        
+    }
     @IBAction func addPlanButtonPressed(_ sender: UIBarButtonItem) {
-        agenda?.addToPlan(CoreDataHelper.newPlan())
+        createNewPlan()
+        save()
         reloadPlans()
         planTableView.reloadData()
     }
     
     func reloadPlans() {
-         plans = agenda?.plan?.allObjects as? [Plan]
+       let myPlans = (agenda?.plan?.allObjects as? [Plan])!
+        if myPlans.count > 1{
+        plans = myPlans.sorted(by: { (plan1, plan2) -> Bool in
+            return plan1.timeStamp! > plan2.timeStamp!
+        })
+        }
+        else{
+            plans = myPlans
+        }
     }
     
+    func save() {
+        for index in 0..<plans.count {
+            let cell = planTableView.cellForRow(at: IndexPath(row: index, section: 0)) as! PlanTableViewCell
+            guard let title = cell.titleTextField.text,
+                let start = cell.startTimeTextField.text,
+                let end = cell.endTimeTextField.text,
+                let details = cell.detailsTextView.text,
+                let location = cell.locationTextField.text
+                
+                else {return}
+            plans[index].title = title
+            plans[index].startTime = start
+            plans[index].endTime = end
+            plans[index].details = details
+            plans[index].location = location
+            plans[index].timeStamp = Date()
+        }
+        if plans.count != 0{
+        agenda?.timeInterval = timePeriodTextField.text
+        agenda?.start = startTimeTextField.text
+        agenda?.end = startTimeTextField.text
+        CoreDataHelper.saveProject()
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         switch identifier {
         case "save":
-            guard let plans = plans  else {return}
-            for index in 0..<plans.count {
-                let cell = planTableView.cellForRow(at: IndexPath(row: index, section: 0)) as! PlanTableViewCell
-                guard let title = cell.titleTextField.text,
-                    let start = cell.startTimeTextField.text,
-                    let end = cell.endTimeTextField.text,
-                    let details = cell.detailsTextView.text,
-                    let location = cell.locationTextField.text
-                else {return}
-                plans[index].title = title
-                plans[index].startTime = start
-                plans[index].endTime = end
-                plans[index].details = details
-                plans[index].location = location
-            }
-            
-            agenda?.timeInterval = timePeriodTextField.text
-            agenda?.start = startTimeTextField.text
-            agenda?.end = startTimeTextField.text
-            
-            CoreDataHelper.saveProject()
+            save()
         default:
             print("error")
         }
@@ -79,12 +104,12 @@ class DisplayAgendaViewController: UIViewController {
 }
 extension DisplayAgendaViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (plans?.count)!
+        return (plans.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "planTableViewCell", for: indexPath) as! PlanTableViewCell
-        let plan = plans![indexPath.row]
+        let plan = plans[indexPath.row]
         cell.titleTextField.text = plan.title
         cell.detailsTextView.text = plan.details
         cell.startTimeTextField.text = plan.startTime
@@ -99,11 +124,11 @@ extension DisplayAgendaViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.dequeueReusableCell(withIdentifier: "planTableViewCell", for: indexPath) as! PlanTableViewCell
-        let plan = plans?[indexPath.row]
-        plan?.title = cell.titleTextField.text
-        plan?.details = cell.detailsTextView.text
-        plan?.startTime = cell.startTimeTextField.text
-        plan?.endTime = cell.endTimeTextField.text
-        plan?.location = cell.locationTextField.text
+        let plan = plans[indexPath.row]
+        plan.title = cell.titleTextField.text
+        plan.details = cell.detailsTextView.text
+        plan.startTime = cell.startTimeTextField.text
+        plan.endTime = cell.endTimeTextField.text
+        plan.location = cell.locationTextField.text
     }
 }

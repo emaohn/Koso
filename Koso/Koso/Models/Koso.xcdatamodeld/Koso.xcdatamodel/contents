@@ -10,11 +10,10 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="element" inverseEntity="Project" syncable="YES"/>
     </entity>
-    <entity name="List" representedClassName="List" parentEntity="Element" syncable="YES" codeGenerationType="class">
-        <relationship name="listItem" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ListItem" inverseName="list" inverseEntity="ListItem" syncable="YES"/>
-    </entity>
-    <entity name="ListItem" representedClassName="ListItem" syncable="YES" codeGenerationType="class">
-        <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="List" inverseName="listItem" inverseEntity="List" syncable="YES"/>
+    <entity name="Image" representedClassName="Image" parentEntity="Element" syncable="YES" codeGenerationType="class">
+        <attribute name="imageDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageHeight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Note" representedClassName="Note" parentEntity="Element" syncable="YES" codeGenerationType="class">
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,6 +23,7 @@
         <attribute name="endTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="agenda" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Agenda" inverseName="plan" inverseEntity="Agenda" syncable="YES"/>
     </entity>
@@ -41,10 +41,9 @@
     <elements>
         <element name="Agenda" positionX="-164" positionY="53" width="128" height="105"/>
         <element name="Element" positionX="-90" positionY="-135" width="128" height="73"/>
-        <element name="List" positionX="27" positionY="44" width="128" height="58"/>
-        <element name="ListItem" positionX="63" positionY="146" width="128" height="58"/>
+        <element name="Image" positionX="27" positionY="44" width="128" height="90"/>
         <element name="Note" positionX="-227" positionY="-45" width="128" height="58"/>
-        <element name="Plan" positionX="-369" positionY="54" width="128" height="135"/>
+        <element name="Plan" positionX="-369" positionY="54" width="128" height="150"/>
         <element name="Project" positionX="79" positionY="-100" width="128" height="118"/>
         <element name="ToDo" positionX="-81" positionY="176" width="128" height="73"/>
     </elements>

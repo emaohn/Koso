@@ -53,13 +53,13 @@ class DisplayProjectViewController: UIViewController {
             destination?.agenda = element as? Agenda
         case "openList":
             let destination = segue.destination as? DisplayListViewController
-            destination?.list = element as? List
+            destination?.image = element as? Image
         case "openNote":
             let destination = segue.destination as? DisplayNoteViewController
             destination?.note = element as? Note
         case "openToDo":
             let destination = segue.destination as? DisplayToDoViewController
-            destination?.todo = (element as? ToDo)!
+            destination?.todo = element as? ToDo
         default:
             print("error")
         }
@@ -81,8 +81,8 @@ extension DisplayProjectViewController: UITableViewDelegate, UITableViewDataSour
         if let _ = element as? ToDo {
             let cell = tableView.dequeueReusableCell(withIdentifier: "todo", for: indexPath) as! ToDoTableViewCell
             return cell
-        } else if let _ = element as? List {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "list", for: indexPath) as! ListTableViewCell
+        } else if let _ = element as? Image {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "image", for: indexPath) as! ListTableViewCell
             return cell
         } else if let agenda = element as? Agenda {
             let cell = tableView.dequeueReusableCell(withIdentifier: "agenda", for: indexPath) as! AgendaTableViewCell
@@ -114,7 +114,7 @@ extension DisplayProjectViewController: UITableViewDelegate, UITableViewDataSour
         element = elements[indexPath.row]
         if let _ = element as? ToDo {
             self.performSegue(withIdentifier: "openToDo", sender: self)
-        } else if let _ = element as? List {
+        } else if let _ = element as? Image {
             self.performSegue(withIdentifier: "openList", sender: self)
         } else if let _ = element as? Agenda {
             self.performSegue(withIdentifier: "openAgenda", sender: self)

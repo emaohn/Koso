@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 class ListTableViewCell: UITableViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
-    
+    //@IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageDescriptionTextView: UITextView!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 }

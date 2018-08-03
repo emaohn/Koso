@@ -27,7 +27,9 @@ class AddElementsViewController: UIViewController {
     }
     
     @IBAction func addListButtonPressed(_ sender: UIButton) {
-        selectedElement = CoreDataHelper.newList()
+        selectedElement = CoreDataHelper.newImage()
+        let photoHelper = PhotoHelper()
+        photoHelper.presentActionSheet(from: self)
         self.performSegue(withIdentifier: "backToDisplayProject", sender: self)
     }
     
@@ -39,9 +41,10 @@ class AddElementsViewController: UIViewController {
         selectedElement = CoreDataHelper.newNote()
         
         self.performSegue(withIdentifier: "backToDisplayProject", sender: self)    }
-    @IBAction func cancelNewElementButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "cancel", sender: self)
-    }
+    
+//    @IBAction func cancelNewElementButtonPressed(_ sender: Any) {
+//        self.performSegue(withIdentifier: "cancel", sender: self)
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
