@@ -10,5 +10,13 @@ import Foundation
 import UIKit
 
 class TaskTableViewCell: UITableViewCell {
+    var completionButtonTouched: ((UITableViewCell) -> Void)? = nil
+    
     @IBOutlet weak var taskTextField: UITextField!
+    @IBOutlet weak var completionButton: UIButton!
+    
+    @IBAction func completionButtonPressed(_ sender: Any) {
+        completionButton.isSelected = !completionButton.isSelected
+        completionButtonTouched?(self)
+    }
 }

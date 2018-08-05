@@ -11,7 +11,11 @@ import UIKit
 
 class DisplayAgendaViewController: UIViewController {
     var agenda: Agenda?
-    var plans = [Plan]()
+    var plans = [Plan]() {
+        didSet {
+            planTableView.reloadData()
+        }
+    }
     
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var startTimeTextField: UITextField!
@@ -28,6 +32,8 @@ class DisplayAgendaViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //planTableView.keyboardDismissMode = .interactive
+        planTableView.keyboardDismissMode = .onDrag
         reloadPlans()
         setup()
     }
@@ -39,38 +45,38 @@ class DisplayAgendaViewController: UIViewController {
     }
     
     func createNewPlan(){
-       let plan = CoreDataHelper.newPlan()
+        let plan = CoreDataHelper.newPlan()
         plan.title = ""
         plan.details = ""
         plan.endTime = ""
         plan.startTime = ""
         plan.timeStamp = Date()
         plan.location = ""
-       agenda?.addToPlan(plan)
+        agenda?.addToPlan(plan)
         
     }
     @IBAction func addPlanButtonPressed(_ sender: UIBarButtonItem) {
         createNewPlan()
         save()
         reloadPlans()
-        planTableView.reloadData()
     }
     
     func reloadPlans() {
-       let myPlans = (agenda?.plan?.allObjects as? [Plan])!
-        if myPlans.count > 1{
-        plans = myPlans.sorted(by: { (plan1, plan2) -> Bool in
-            return plan1.timeStamp! > plan2.timeStamp!
-        })
-        }
-        else{
-            plans = myPlans
-        }
+        plans = (agenda?.plan?.allObjects as? [Plan])!
+//        if myPlans.count > 1{
+//            plans = myPlans.sorted(by: { (plan1, plan2) -> Bool in
+//                return plan1.timeStamp! > plan2.timeStamp!
+//            })
+//        }
+//        else{
+//            plans = myPlans
+//        }
     }
     
     func save() {
         for index in 0..<plans.count {
             let cell = planTableView.cellForRow(at: IndexPath(row: index, section: 0)) as! PlanTableViewCell
+            
             guard let title = cell.titleTextField.text,
                 let start = cell.startTimeTextField.text,
                 let end = cell.endTimeTextField.text,
@@ -86,10 +92,10 @@ class DisplayAgendaViewController: UIViewController {
             plans[index].timeStamp = Date()
         }
         if plans.count != 0{
-        agenda?.timeInterval = timePeriodTextField.text
-        agenda?.start = startTimeTextField.text
-        agenda?.end = startTimeTextField.text
-        CoreDataHelper.saveProject()
+            agenda?.timeInterval = timePeriodTextField.text
+            agenda?.start = startTimeTextField.text
+            agenda?.end = startTimeTextField.text
+            CoreDataHelper.saveProject()
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -111,10 +117,16 @@ extension DisplayAgendaViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: "planTableViewCell", for: indexPath) as! PlanTableViewCell
         let plan = plans[indexPath.row]
         cell.titleTextField.text = plan.title
+        cell.titleTextField.tag = indexPath.row
         cell.detailsTextView.text = plan.details
+        cell.detailsTextView.tag = indexPath.row
         cell.startTimeTextField.text = plan.startTime
+        cell.startTimeTextField.tag = indexPath.row
         cell.endTimeTextField.text = plan.endTime
+        cell.endTimeTextField.tag = indexPath.row
         cell.locationTextField.text = plan.location
+        cell.locationTextField.tag = indexPath.row
+        cell.delegate = self
         return cell
     }
     
@@ -131,4 +143,24 @@ extension DisplayAgendaViewController: UITableViewDelegate, UITableViewDataSourc
         plan.endTime = cell.endTimeTextField.text
         plan.location = cell.locationTextField.text
     }
+}
+
+extension DisplayAgendaViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DisplayAgendaViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+extension DisplayAgendaViewController: PlanTableViewCellDelegate {
+    func didEndEditing(_ cell: PlanTableViewCell) {
+        let index = cell.endTimeTextField.tag
+        
+        print("saving data")
+    }
+    
 }

@@ -12,6 +12,7 @@ import UIKit
 class DisplayToDoViewController: UIViewController {
     var todo: ToDo?
     var todos = [ToDo]()
+    var selectedToDo: ToDo?
     
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var centerPopupConstraint: NSLayoutConstraint!
@@ -33,15 +34,10 @@ class DisplayToDoViewController: UIViewController {
         todos = todo?.toDo?.allObjects as! [ToDo]
     }
     
-    func displayPopup() {
-        centerPopupConstraint.constant = 0
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
-    }
-    
     @IBAction func addToDoButtonPressed(_ sender: UIBarButtonItem) {
-        todo?.addToToDo(CoreDataHelper.newToDo())
+        var newToDo = CoreDataHelper.newToDo()
+        newToDo.completed = false
+        todo?.addToToDo(newToDo)
         retrieveToDos()
         toDoTableView.reloadData()
     }
@@ -59,9 +55,17 @@ class DisplayToDoViewController: UIViewController {
                 todo.title = task
             }
             CoreDataHelper.saveProject()
+       case "taskBreakDown":
+            guard let todo = selectedToDo else {return}
+            let destination = segue.destination as? ToDoBreakdownViewController
+                destination?.todo = todo
         default:
             print("error")
         }
+    }
+    
+    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+        CoreDataHelper.saveProject()
     }
 }
 
@@ -71,15 +75,36 @@ extension DisplayToDoViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "taskTableViewCell", for: indexPath) as! TaskTableViewCell
+        let cell1 = tableView.dequeueReusableCell(withIdentifier: "taskTableViewCell", for: indexPath) as! TaskTableViewCell
         let task = todos[indexPath.row]
         if let task = task.title {
-            cell.taskTextField.text = task
+            cell1.taskTextField.text = task
         }
-        return cell
+        cell1.completionButtonTouched = {(cell) in guard tableView.indexPath(for: cell) != nil
+            else { return }
+            if !task.completed {
+                task.completed = true
+                cell1.completionButton.setTitle("[✓]", for: .normal)
+            } else {
+                task.completed = false
+                cell1.completionButton.setTitle("[  ]", for: .normal)
+            }
+        }
+        return cell1
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        displayPopup()
+        self.performSegue(withIdentifier: "taskTableviewCell", sender: self)
+    }
+}
+
+extension DisplayToDoViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DisplayToDoViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

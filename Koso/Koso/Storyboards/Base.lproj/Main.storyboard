@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -340,7 +341,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="a2J-E4-sQs" firstAttribute="trailing" secondItem="hll-Yq-qdQ" secondAttribute="trailing" constant="15" id="67f-S2-OyV"/>
                             <constraint firstItem="hll-Yq-qdQ" firstAttribute="top" secondItem="hvE-2k-Ouj" secondAttribute="bottom" constant="15" id="CnW-lG-rJ4"/>
@@ -411,21 +412,36 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7GQ-0i-C9t">
-                                                    <rect key="frame" x="15" y="5" width="345" height="49.5"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7GQ-0i-C9t">
+                                                    <rect key="frame" x="80" y="5" width="280" height="50"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5m-Jd-fgj">
+                                                    <rect key="frame" x="20" y="5" width="50" height="49.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="Xs5-Sq-3u8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                    <state key="normal" title="[  ]"/>
+                                                    <connections>
+                                                        <action selector="completionButtonPressed:" destination="RjQ-oP-Irq" eventType="touchUpInside" id="7oJ-hR-W0o"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="7GQ-0i-C9t" firstAttribute="leading" secondItem="9Qh-ug-HpQ" secondAttribute="leading" constant="15" id="0uQ-Ru-2qd"/>
-                                                <constraint firstItem="7GQ-0i-C9t" firstAttribute="top" secondItem="9Qh-ug-HpQ" secondAttribute="top" constant="5" id="4pj-K6-lPg"/>
-                                                <constraint firstAttribute="bottom" secondItem="7GQ-0i-C9t" secondAttribute="bottom" constant="5" id="9US-ex-0kG"/>
-                                                <constraint firstAttribute="trailing" secondItem="7GQ-0i-C9t" secondAttribute="trailing" constant="15" id="DXv-wj-u5f"/>
+                                                <constraint firstItem="U5m-Jd-fgj" firstAttribute="top" secondItem="9Qh-ug-HpQ" secondAttribute="top" constant="5" id="1fo-UW-6yJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="7GQ-0i-C9t" secondAttribute="bottom" constant="5" id="7dL-1Q-gSf"/>
+                                                <constraint firstAttribute="trailing" secondItem="7GQ-0i-C9t" secondAttribute="trailing" constant="15" id="FE3-BY-Mdw"/>
+                                                <constraint firstItem="7GQ-0i-C9t" firstAttribute="leading" secondItem="U5m-Jd-fgj" secondAttribute="trailing" constant="10" id="QSl-aj-ydl"/>
+                                                <constraint firstItem="7GQ-0i-C9t" firstAttribute="top" secondItem="9Qh-ug-HpQ" secondAttribute="top" constant="5" id="XJb-wH-HWC"/>
+                                                <constraint firstItem="U5m-Jd-fgj" firstAttribute="leading" secondItem="9Qh-ug-HpQ" secondAttribute="leading" constant="20" id="cIN-qd-ptD"/>
+                                                <constraint firstAttribute="bottom" secondItem="U5m-Jd-fgj" secondAttribute="bottom" constant="5" id="f9n-fo-hV2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="completionButton" destination="U5m-Jd-fgj" id="8oW-0t-AVS"/>
                                             <outlet property="taskTextField" destination="7GQ-0i-C9t" id="NGb-pJ-x9T"/>
                                         </connections>
                                     </tableViewCell>
@@ -466,7 +482,7 @@
                         <outlet property="addToDoButton" destination="cS0-eu-Nrf" id="wUV-vW-eiW"/>
                         <outlet property="headerView" destination="4VS-sd-h03" id="grd-ED-98d"/>
                         <outlet property="toDoTableView" destination="5ic-zn-21n" id="per-1v-y82"/>
-                        <segue destination="PhZ-Yv-91V" kind="show" id="9Cg-80-eSv"/>
+                        <segue destination="PhZ-Yv-91V" kind="show" identifier="taskBreakDown" id="9Cg-80-eSv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="996-ZG-R52" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -487,13 +503,40 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="8uO-kd-Q7L">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="8uO-kd-Q7L" customClass="TaskTableViewCell" customModule="Koso" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8uO-kd-Q7L" id="zB2-7R-44p">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Bs-cY-CzW">
+                                                    <rect key="frame" x="65" y="4" width="295" height="51"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eT-AB-0oW">
+                                                    <rect key="frame" x="25" y="15" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="GjQ-mc-jNa"/>
+                                                    </constraints>
+                                                    <state key="normal" title="[  ]"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4Bs-cY-CzW" firstAttribute="leading" secondItem="5eT-AB-0oW" secondAttribute="trailing" constant="10" id="0qL-cJ-DVS"/>
+                                                <constraint firstItem="4Bs-cY-CzW" firstAttribute="top" secondItem="zB2-7R-44p" secondAttribute="top" constant="4" id="1rs-yS-hDf"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="5eT-AB-0oW" secondAttribute="bottom" constant="4" id="5zj-uD-Cd1"/>
+                                                <constraint firstItem="5eT-AB-0oW" firstAttribute="top" secondItem="zB2-7R-44p" secondAttribute="topMargin" constant="4" id="E5a-2v-AGd"/>
+                                                <constraint firstAttribute="bottom" secondItem="4Bs-cY-CzW" secondAttribute="bottom" constant="4" id="iIV-R7-mzI"/>
+                                                <constraint firstAttribute="trailing" secondItem="4Bs-cY-CzW" secondAttribute="trailing" constant="15" id="phC-nm-ebF"/>
+                                                <constraint firstItem="5eT-AB-0oW" firstAttribute="leading" secondItem="zB2-7R-44p" secondAttribute="leadingMargin" constant="10" id="ppX-gt-kLH"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="taskTextField" destination="4Bs-cY-CzW" id="o1O-7a-Dc4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -506,7 +549,11 @@
                         <viewLayoutGuide key="safeArea" id="PVp-Zd-0xT"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="62e-PL-NTh">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SRP-P5-4XQ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SRP-P5-4XQ">
+                            <connections>
+                                <action selector="addTaskButtonPressed:" destination="PhZ-Yv-91V" id="6V1-5m-Jbz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="vsH-JR-D2O" id="Rr4-Ma-ovz"/>
@@ -831,7 +878,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5a-7z-bsJ">
                                         <rect key="frame" x="0.0" y="101" width="104" height="100.5"/>
-                                        <state key="normal" title="List"/>
+                                        <state key="normal" title="Image"/>
                                         <connections>
                                             <action selector="addListButtonPressed:" destination="qJe-bc-csZ" eventType="touchUpInside" id="now-Ud-ICy"/>
                                         </connections>
