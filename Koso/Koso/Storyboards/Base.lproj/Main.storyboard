@@ -412,6 +412,11 @@
                         <viewLayoutGuide key="safeArea" id="jX4-5B-Ae2"/>
                     </view>
                     <navigationItem key="navigationItem" title="Agenda" id="KdR-1o-eBW">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="65F-EY-dei">
+                            <connections>
+                                <segue destination="Go7-zm-CpP" kind="unwind" identifier="cancel" unwindAction="unwindWithSegue:" id="A7L-PT-ake"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="add" style="plain" id="9pr-ai-QaH">
                                 <connections>
@@ -497,6 +502,11 @@
                         <viewLayoutGuide key="safeArea" id="a2J-E4-sQs"/>
                     </view>
                     <navigationItem key="navigationItem" title="Note" id="R9z-Ih-pv5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="aTG-ex-GbG">
+                            <connections>
+                                <segue destination="KOx-O9-MxP" kind="unwind" identifier="cancel" unwindAction="unwindWithSegue:" id="eb0-YM-vjE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Zqq-Om-lIR">
                             <connections>
                                 <segue destination="KOx-O9-MxP" kind="unwind" identifier="saveNote" unwindAction="unwindWithSegue:" id="8ZA-hc-ANB"/>
@@ -613,6 +623,11 @@
                         <viewLayoutGuide key="safeArea" id="Sul-Cu-mUJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="To Do" id="cch-4o-6Bf">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rQg-H6-Vzh">
+                            <connections>
+                                <segue destination="czM-aw-E6t" kind="unwind" identifier="cancel" unwindAction="unwindWithSegue:" id="jru-wv-moL"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="cS0-eu-Nrf">
                                 <connections>

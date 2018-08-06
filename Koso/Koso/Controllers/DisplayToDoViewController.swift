@@ -95,6 +95,8 @@ class DisplayToDoViewController: UIViewController {
             guard let todo = selectedToDo else {return}
             let destination = segue.destination as? ToDoBreakdownViewController
                 destination?.todo = todo
+        case "cancel":
+            print("cancel")
         default:
             print("error")
         }

@@ -26,6 +26,8 @@ class DisplayNoteViewController: UIViewController {
             note?.note = noteTextView.text
             note?.title = titleTextField.text
             CoreDataHelper.saveProject()
+        case "cancel":
+            print("Canceling")
         default:
             print("error")
         }

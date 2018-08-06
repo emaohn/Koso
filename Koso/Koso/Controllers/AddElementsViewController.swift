@@ -22,8 +22,7 @@ class AddElementsViewController: UIViewController {
     }
     
     @IBAction func addToDoButtonPressed(_ sender: UIButton) {
-        selectedElement = CoreDataHelper.newToDo()
-        self.performSegue(withIdentifier: "backToDisplayProject", sender: self)
+        self.performSegue(withIdentifier: "createToDo", sender: self)
     }
     
     @IBAction func addListButtonPressed(_ sender: UIButton) {
@@ -34,13 +33,11 @@ class AddElementsViewController: UIViewController {
     }
     
     @IBAction func addAgendaButtonPressed(_ sender: UIButton) {
-        selectedElement = CoreDataHelper.newAgenda()
-        self.performSegue(withIdentifier: "backToDisplayProject", sender: self)    }
+        self.performSegue(withIdentifier: "createAgenda", sender: self)    }
     
     @IBAction func addNoteButtonPressed(_ sender: UIButton) {
-        selectedElement = CoreDataHelper.newNote()
-        
-        self.performSegue(withIdentifier: "backToDisplayProject", sender: self)    }
+        self.performSegue(withIdentifier: "createNote", sender: self)
+    }
     
 //    @IBAction func cancelNewElementButtonPressed(_ sender: Any) {
 //        self.performSegue(withIdentifier: "cancel", sender: self)
@@ -58,8 +55,20 @@ class AddElementsViewController: UIViewController {
                 CoreDataHelper.saveProject()
             } else { return }
         case "createToDo":
+            let destination = segue.destination as? DisplayToDoViewController
+            let todo = CoreDataHelper.newToDo()
+            todo.timeStamp = Date()
+            destination?.todo = todo
         case "createNote":
+            let destination = segue.destination as? DisplayNoteViewController
+            let note = CoreDataHelper.newNote()
+            note.timeStamp = Date()
+            destination?.note = note
         case "createAgenda":
+            let destination = segue.destination as? DisplayAgendaViewController
+            let agenda = CoreDataHelper.newAgenda()
+            agenda.timeStamp = Date()
+            destination?.agenda = agenda
         case "cancel":
             print("canceling")
         default:

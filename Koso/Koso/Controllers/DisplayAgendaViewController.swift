@@ -137,6 +137,8 @@ class DisplayAgendaViewController: UIViewController {
         case "editPlan":
             let destination = segue.destination as? DisplayPlanViewController
             destination?.plan = self.selectedPlan
+        case "cancel":
+            print("cancel")
         default:
             print("error")
         }

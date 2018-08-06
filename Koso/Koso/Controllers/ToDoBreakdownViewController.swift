@@ -95,10 +95,20 @@ extension ToDoBreakdownViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "taskTableViewCell", for: indexPath) as! TaskTableViewCell
+        let cell1 = tableView.dequeueReusableCell(withIdentifier: "taskTableViewCell", for: indexPath) as! TaskTableViewCell
         let task = todos[indexPath.row]
-        cell.taskLabel.text = task.title
-        return cell
+        cell1.taskLabel.text = task.title
+        cell1.completionButtonTouched = {(cell) in guard tableView.indexPath(for: cell) != nil
+            else { return }
+            if !task.completed {
+                task.completed = true
+                cell1.completionButton.setTitle("[✓]", for: .normal)
+            } else {
+                task.completed = false
+                cell1.completionButton.setTitle("[  ]", for: .normal)
+            }
+        }
+        return cell1
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
