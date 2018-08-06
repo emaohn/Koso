@@ -30,7 +30,11 @@ class NewProjectViewController: UIViewController {
             let project = CoreDataHelper.newProject()
             
             project.name = projectNameTextField.text
-            project.projectDescription = projectDescriptionTextField.text
+            if project.projectDescription != "" {
+                project.projectDescription = projectDescriptionTextField.text
+            } else {
+                project.projectDescription = "project description"
+            }
             project.dueDate = deadlineDatePicker.date
             
             let destination = segue.destination as? DisplayProjectViewController

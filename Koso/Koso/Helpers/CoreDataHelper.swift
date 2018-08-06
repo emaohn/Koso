@@ -32,11 +32,6 @@ struct CoreDataHelper {
         return agenda
     }
     
-    static func newImage() -> Image {
-        let image = NSEntityDescription.insertNewObject(forEntityName: "Image", into: context) as! Image
-        return image
-    }
-    
     static func newNote() -> Note {
         let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as! Note
         return note

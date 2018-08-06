@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class AddElementsViewController: UIViewController {
+    var project: Project?
     var selectedElement: Element?
     
     @IBOutlet weak var addToDoButton: UIButton!
@@ -25,28 +26,21 @@ class AddElementsViewController: UIViewController {
         //self.performSegue(withIdentifier: "createToDo", sender: self)
         print("add todo")
     }
-    
-    @IBAction func addListButtonPressed(_ sender: UIButton) {
-        selectedElement = CoreDataHelper.newImage()
-        let photoHelper = PhotoHelper()
-        photoHelper.presentActionSheet(from: self)
-        self.performSegue(withIdentifier: "backToDisplayProject", sender: self)
-    }
-    
+
     @IBAction func addAgendaButtonPressed(_ sender: UIButton) {
         //self.performSegue(withIdentifier: "createAgenda", sender: self)
         print("add agenda")
     }
-        
-    
+
+
     @IBAction func addNoteButtonPressed(_ sender: UIButton) {
         print("add note")
         //self.performSegue(withIdentifier: "createNote", sender: self)
     }
     
-//    @IBAction func cancelNewElementButtonPressed(_ sender: Any) {
-//        self.performSegue(withIdentifier: "cancel", sender: self)
-//    }
+    @IBAction func cancelNewElementButtonPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "cancel", sender: self)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
@@ -65,16 +59,19 @@ class AddElementsViewController: UIViewController {
             let todo = CoreDataHelper.newToDo()
             todo.timeStamp = Date()
             destination?.todo = todo
+            project?.addToElement(todo)
         case "createNote":
             let destination = segue.destination as? DisplayNoteViewController
             let note = CoreDataHelper.newNote()
             note.timeStamp = Date()
             destination?.note = note
+            project?.addToElement(note)
         case "createAgenda":
             let destination = segue.destination as? DisplayAgendaViewController
             let agenda = CoreDataHelper.newAgenda()
             agenda.timeStamp = Date()
             destination?.agenda = agenda
+            project?.addToElement(agenda)
         case "cancel":
             print("canceling")
         default:

@@ -19,6 +19,7 @@ class ToDoBreakdownViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +59,7 @@ class ToDoBreakdownViewController: UIViewController {
             let todo = CoreDataHelper.newToDo()
             todo.title = todoTextField?.text
             todo.completed = false
+            todo.timeStamp = Date()
             
             self.todo?.addToToDo(todo)
             self.retrieveToDos()

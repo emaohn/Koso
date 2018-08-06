@@ -11,11 +11,6 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="element" inverseEntity="Project" syncable="YES"/>
     </entity>
-    <entity name="Image" representedClassName="Image" parentEntity="Element" syncable="YES" codeGenerationType="class">
-        <attribute name="imageDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="imageHeight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <entity name="Note" representedClassName="Note" parentEntity="Element" syncable="YES" codeGenerationType="class">
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -43,7 +38,6 @@
     <elements>
         <element name="Agenda" positionX="-164" positionY="53" width="128" height="105"/>
         <element name="Element" positionX="-90" positionY="-135" width="128" height="90"/>
-        <element name="Image" positionX="27" positionY="44" width="128" height="90"/>
         <element name="Note" positionX="-227" positionY="-45" width="128" height="58"/>
         <element name="Plan" positionX="-369" positionY="54" width="128" height="150"/>
         <element name="Project" positionX="79" positionY="-100" width="128" height="118"/>

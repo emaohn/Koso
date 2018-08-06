@@ -58,7 +58,7 @@ extension ProjectManagerViewController: UITableViewDelegate, UITableViewDataSour
         cell.titleLabel.text = project.name
         cell.dueDateLabel.text = project.dueDate?.convertToString()
         cell.numDaysLeftLabel.text = String(project.numDaysLeft)
-        cell.projectDescriptionLabel.text = project.projectDescription
+        cell.projectDescriptionLabel.text = description
         
         return cell
     }
@@ -73,5 +73,9 @@ extension ProjectManagerViewController: UITableViewDelegate, UITableViewDataSour
             CoreDataHelper.delete(project: deletedProject)
             projects = CoreDataHelper.retrieveProjects()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 125
     }
 }

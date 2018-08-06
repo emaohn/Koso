@@ -31,6 +31,7 @@ class DisplayAgendaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         planTableView.keyboardDismissMode = .onDrag
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -30,7 +30,7 @@ class DisplayProjectViewController: UIViewController {
         super.viewDidLoad()
         titleLabel.text = project?.name
         deadlineLabel.text = project?.dueDate?.convertToString()
-        numDaysLeftLabel.text = "\(String(describing: project?.numDaysLeft))"
+       // numDaysLeftLabel.text = "\(String(describing: project?.numDaysLeft))"
         projectDescriptionLabel.text = project?.projectDescription
     }
     
@@ -54,7 +54,8 @@ class DisplayProjectViewController: UIViewController {
         guard let identifier = segue.identifier else {return}
         switch identifier {
         case "addItem":
-            print("adding new item")
+            let destination = segue.destination as? AddElementsViewController
+            destination?.project = self.project
         case "save":
             project?.name = titleLabel.text
             CoreDataHelper.saveProject()
@@ -63,9 +64,6 @@ class DisplayProjectViewController: UIViewController {
         case "openAgenda":
             let destination = segue.destination as? DisplayAgendaViewController
             destination?.agenda = element as? Agenda
-        case "openList":
-            let destination = segue.destination as? DisplayListViewController
-            destination?.image = element as? Image
         case "openNote":
             let destination = segue.destination as? DisplayNoteViewController
             destination?.note = element as? Note
@@ -99,9 +97,6 @@ extension DisplayProjectViewController: UITableViewDelegate, UITableViewDataSour
                 cell.dueDateLabel.text = "Completed by: " + deadline.convertToString()
             }
             return cell
-        } else if let _ = element as? Image {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "image", for: indexPath) as! ListTableViewCell
-            return cell
         } else if let agenda = element as? Agenda {
             let cell = tableView.dequeueReusableCell(withIdentifier: "agenda", for: indexPath) as! AgendaTableViewCell
             cell.timeIntervalLabel.text = agenda.timeInterval
@@ -132,8 +127,6 @@ extension DisplayProjectViewController: UITableViewDelegate, UITableViewDataSour
         element = elements[indexPath.row]
         if let _ = element as? ToDo {
             self.performSegue(withIdentifier: "openToDo", sender: self)
-        } else if let _ = element as? Image {
-            self.performSegue(withIdentifier: "openList", sender: self)
         } else if let _ = element as? Agenda {
             self.performSegue(withIdentifier: "openAgenda", sender: self)
         } else if let _ = element as? Note {

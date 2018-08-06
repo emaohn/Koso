@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UINavigationBar.appearance().tintColor = .white
         // This will set the nav bar color to a light red color
-        UINavigationBar.appearance().barTintColor = UIColor(red: 67/255, green: 67/255, blue: 67/255, alpha: 1)
+        UINavigationBar.appearance().barTintColor = .tcDarkGrey
         // This will disable the navbar's translucency
         UINavigationBar.appearance().isTranslucent = false
         // When the tablview is scrolled, this will resize the title text
