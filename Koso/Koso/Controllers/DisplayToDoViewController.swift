@@ -14,8 +14,8 @@ class DisplayToDoViewController: UIViewController {
     var todos = [ToDo]()
     var selectedToDo: ToDo?
     
-    @IBOutlet weak var popupView: UIView!
-    @IBOutlet weak var centerPopupConstraint: NSLayoutConstraint!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var deadlineDatePicker: UIDatePicker!
     @IBOutlet weak var addToDoButton: UIBarButtonItem!
     @IBOutlet weak var toDoTableView: UITableView!
     @IBOutlet weak var headerView: UIView!
@@ -27,33 +27,69 @@ class DisplayToDoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        titleTextField.text = todo?.title
         retrieveToDos()
     }
     
     func retrieveToDos() {
-        todos = todo?.toDo?.allObjects as! [ToDo]
+//        todos = todo?.toDo?.allObjects as! [ToDo]
+//        toDoTableView.reloadData()
+        guard let myTodos = self.todo?.toDo?.allObjects as? [ToDo] else {return}
+        if (myTodos.count) > 1{
+            todos = myTodos.sorted(by: { (task1, task2) -> Bool in
+                return task1.timeStamp! < task2.timeStamp!
+            })
+        }
+        else{
+            todos = myTodos
+        }
+        toDoTableView.reloadData()
     }
     
     @IBAction func addToDoButtonPressed(_ sender: UIBarButtonItem) {
-        var newToDo = CoreDataHelper.newToDo()
-        newToDo.completed = false
-        todo?.addToToDo(newToDo)
-        retrieveToDos()
-        toDoTableView.reloadData()
+        // Create the alert controller
+        let alertController = UIAlertController(title: "What do you need to do?", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let subview = (alertController.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
+        subview.backgroundColor = UIColor(red: 201/255, green: 200/255, blue: 209/255, alpha: 1)
+        //title
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "ex. wash dishes"
+        }
+        
+        // Create the actions
+        let okAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            let todoTextField = alertController.textFields![0] as UITextField?
+
+            let task = CoreDataHelper.newToDo()
+            task.title = todoTextField?.text
+            task.completed = false
+            task.timeStamp = Date()
+
+            self.todo?.addToToDo(task)
+            self.retrieveToDos()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        
+        // Add the actions
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        // Present the controller
+        self.present(alertController, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         switch  identifier {
         case "saveToDo":
-            for index in 0..<todos.count {
-                let cell = toDoTableView.cellForRow(at: IndexPath(row: index, section: 0)) as! TaskTableViewCell
-                guard let task = cell.taskTextField.text,
-                    let todo = todo?.toDo?.allObjects[index] as? ToDo
-                    else {return}
-                
-                todo.title = task
-            }
+            self.todo?.title = titleTextField.text
+            self.todo?.deadline = deadlineDatePicker.date
             CoreDataHelper.saveProject()
        case "taskBreakDown":
             guard let todo = selectedToDo else {return}
@@ -77,9 +113,8 @@ extension DisplayToDoViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell1 = tableView.dequeueReusableCell(withIdentifier: "taskTableViewCell", for: indexPath) as! TaskTableViewCell
         let task = todos[indexPath.row]
-        if let task = task.title {
-            cell1.taskTextField.text = task
-        }
+        cell1.taskLabel.text = task.title
+        
         cell1.completionButtonTouched = {(cell) in guard tableView.indexPath(for: cell) != nil
             else { return }
             if !task.completed {
@@ -94,7 +129,16 @@ extension DisplayToDoViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "taskTableviewCell", sender: self)
+        selectedToDo = todos[indexPath.row]
+        self.performSegue(withIdentifier: "taskBreakDown", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let deletedTask = todos[indexPath.row]
+            CoreDataHelper.delete(todo: deletedTask)
+            todos = todo?.toDo?.allObjects as! [ToDo]
+        }
     }
 }
 

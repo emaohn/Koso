@@ -13,6 +13,7 @@
 		E82981D92108AE08005240EC /* Koso.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E82981D72108AE08005240EC /* Koso.xcdatamodeld */; };
 		E82981DC2108B1FC005240EC /* Date+ConverterToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82981DB2108B1FC005240EC /* Date+ConverterToString.swift */; };
 		E837EE5021139A66000A1CED /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837EE4F21139A66000A1CED /* TaskTableViewCell.swift */; };
+		E8485E9921176EA100854490 /* DisplayPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8485E9821176EA100854490 /* DisplayPlanViewController.swift */; };
 		E8780E1E2108E8E400113C69 /* ToDoTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E1D2108E8E400113C69 /* ToDoTableCellView.swift */; };
 		E8780E202108E90000113C69 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E1F2108E90000113C69 /* ImageCell.swift */; };
 		E8780E222108E91600113C69 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8780E212108E91600113C69 /* NoteTableViewCell.swift */; };
@@ -42,6 +43,7 @@
 		E82981D82108AE08005240EC /* Koso.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Koso.xcdatamodel; sourceTree = "<group>"; };
 		E82981DB2108B1FC005240EC /* Date+ConverterToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ConverterToString.swift"; sourceTree = "<group>"; };
 		E837EE4F21139A66000A1CED /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		E8485E9821176EA100854490 /* DisplayPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayPlanViewController.swift; sourceTree = "<group>"; };
 		E8780E1D2108E8E400113C69 /* ToDoTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableCellView.swift; sourceTree = "<group>"; };
 		E8780E1F2108E90000113C69 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		E8780E212108E91600113C69 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				E8E6B519210BBC61006C117E /* DisplayAgendaViewController.swift */,
 				E8E6B51B210BBC69006C117E /* DisplayNoteViewController.swift */,
 				E8066184211500F100A134BE /* ToDoBreakdownViewController.swift */,
+				E8485E9821176EA100854490 /* DisplayPlanViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				E8946CD82107C9F300351C64 /* ProjectManagerViewController.swift in Sources */,
 				E8E6B51C210BBC69006C117E /* DisplayNoteViewController.swift in Sources */,
 				E8E6B516210BBC47006C117E /* DisplayToDoViewController.swift in Sources */,
+				E8485E9921176EA100854490 /* DisplayPlanViewController.swift in Sources */,
 				E8E6B518210BBC4F006C117E /* DisplayListViewController.swift in Sources */,
 				E82981D92108AE08005240EC /* Koso.xcdatamodeld in Sources */,
 				E8780E202108E90000113C69 /* ImageCell.swift in Sources */,

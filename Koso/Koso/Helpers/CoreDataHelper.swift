@@ -71,6 +71,16 @@ struct CoreDataHelper {
         saveProject()
     }
     
+    static func delete(plan: Plan) {
+        context.delete(plan)
+        saveProject()
+    }
+    
+    static func delete(todo: ToDo) {
+        context.delete(todo)
+        saveProject()
+    }
+    
     static func retrieveProjects() -> [Project] {
         do {
             let fetchRequest = NSFetchRequest<Project>(entityName: "Project")

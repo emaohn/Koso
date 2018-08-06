@@ -7,6 +7,7 @@
         <relationship name="plan" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Plan" inverseName="agenda" inverseEntity="Plan" syncable="YES"/>
     </entity>
     <entity name="Element" representedClassName="Element" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="element" inverseEntity="Project" syncable="YES"/>
     </entity>
@@ -36,15 +37,16 @@
     </entity>
     <entity name="ToDo" representedClassName="ToDo" parentEntity="Element" syncable="YES" codeGenerationType="class">
         <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="deadline" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="toDo" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ToDo" inverseName="toDo" inverseEntity="ToDo" syncable="YES"/>
     </entity>
     <elements>
         <element name="Agenda" positionX="-164" positionY="53" width="128" height="105"/>
-        <element name="Element" positionX="-90" positionY="-135" width="128" height="73"/>
+        <element name="Element" positionX="-90" positionY="-135" width="128" height="90"/>
         <element name="Image" positionX="27" positionY="44" width="128" height="90"/>
         <element name="Note" positionX="-227" positionY="-45" width="128" height="58"/>
         <element name="Plan" positionX="-369" positionY="54" width="128" height="150"/>
         <element name="Project" positionX="79" positionY="-100" width="128" height="118"/>
-        <element name="ToDo" positionX="-81" positionY="176" width="128" height="73"/>
+        <element name="ToDo" positionX="-81" positionY="176" width="128" height="90"/>
     </elements>
 </model>

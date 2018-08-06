@@ -36,15 +36,27 @@ class DisplayProjectViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        titleLabel.text = project?.name
         elements = project?.element?.allObjects as! [Element]
     }
     
+    func reloadElements() {
+        guard let myElements = project?.element?.allObjects as? [Element] else {return}
+        if(myElements.count) > 1 {
+            elements = myElements.sorted(by: { (element1, element2) -> Bool in
+                return element1.timeStamp! < element2.timeStamp!
+            })
+        } else {
+            elements = myElements
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         switch identifier {
         case "addItem":
             print("adding new item")
         case "save":
+            project?.name = titleLabel.text
             CoreDataHelper.saveProject()
         case "back":
             print("boing back to main page")
@@ -78,8 +90,14 @@ extension DisplayProjectViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let element = elements[indexPath.row]
-        if let _ = element as? ToDo {
+        if let todo = element as? ToDo {
             let cell = tableView.dequeueReusableCell(withIdentifier: "todo", for: indexPath) as! ToDoTableViewCell
+            if let title = todo.title {
+                cell.titleLabel.text = title
+            }
+            if let deadline = todo.deadline {
+                cell.dueDateLabel.text = "Completed by: " + deadline.convertToString()
+            }
             return cell
         } else if let _ = element as? Image {
             let cell = tableView.dequeueReusableCell(withIdentifier: "image", for: indexPath) as! ListTableViewCell

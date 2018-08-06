@@ -53,9 +53,13 @@ class AddElementsViewController: UIViewController {
         case "backToDisplayProject":
             let destination = segue.destination as? DisplayProjectViewController
             if let element = selectedElement {
+                element.timeStamp = Date()
                 destination?.project?.addToElement(element)
                 CoreDataHelper.saveProject()
             } else { return }
+        case "createToDo":
+        case "createNote":
+        case "createAgenda":
         case "cancel":
             print("canceling")
         default:

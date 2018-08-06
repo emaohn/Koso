@@ -17,6 +17,8 @@ class DisplayAgendaViewController: UIViewController {
         }
     }
     
+    var selectedPlan: Plan?
+    
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var startTimeTextField: UITextField!
     @IBOutlet weak var timePeriodTextField: UITextField!
@@ -28,12 +30,12 @@ class DisplayAgendaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        planTableView.keyboardDismissMode = .onDrag
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //planTableView.keyboardDismissMode = .interactive
-        planTableView.keyboardDismissMode = .onDrag
         reloadPlans()
         setup()
     }
@@ -44,17 +46,17 @@ class DisplayAgendaViewController: UIViewController {
         endTimeTextField.text = agenda?.end
     }
     
-    func createNewPlan(){
-        let plan = CoreDataHelper.newPlan()
-        plan.title = ""
-        plan.details = ""
-        plan.endTime = ""
-        plan.startTime = ""
-        plan.timeStamp = Date()
-        plan.location = ""
-        agenda?.addToPlan(plan)
-        
-    }
+//    func createNewPlan(){
+//        let plan = CoreDataHelper.newPlan()
+//        plan.title = ""
+//        plan.details = ""
+//        plan.endTime = ""
+//        plan.startTime = ""
+//        plan.timeStamp = Date()
+//        plan.location = ""
+//        agenda?.addToPlan(plan)
+//
+//    }
     @IBAction func addPlanButtonPressed(_ sender: UIBarButtonItem) {
         // Create the alert controller
         let alertController = UIAlertController(title: "New Plan", message: "", preferredStyle: UIAlertControllerStyle.alert)
@@ -92,6 +94,7 @@ class DisplayAgendaViewController: UIViewController {
             plan.location = location?.text
             plan.startTime = start?.text
             plan.endTime = end?.text
+            plan.timeStamp = Date()
             
             self.agenda?.addToPlan(plan)
             self.reloadPlans()
@@ -108,57 +111,39 @@ class DisplayAgendaViewController: UIViewController {
         
         // Present the controller
         self.present(alertController, animated: true, completion: nil)
-        
-//        createNewPlan()
-//        save()
     }
     
     func reloadPlans() {
-        plans = (agenda?.plan?.allObjects as? [Plan])!
+//        plans = (agenda?.plan?.allObjects as? [Plan])!
+        guard let myPlans = agenda?.plan?.allObjects as? [Plan] else {return}
+        if (myPlans.count) > 1 {
+            plans = myPlans.sorted(by: { (plan1, plan2) -> Bool in
+                return plan1.timeStamp! < plan2.timeStamp!
+            })
+        } else{
+            plans = myPlans
+        }
         planTableView.reloadData()
-//        if myPlans.count > 1{
-//            plans = myPlans.sorted(by: { (plan1, plan2) -> Bool in
-//                return plan1.timeStamp! > plan2.timeStamp!
-//            })
-//        }
-//        else{
-//            plans = myPlans
-//        }
     }
     
-//    func save() {
-//        for index in 0..<plans.count {
-//            let cell = planTableView.cellForRow(at: IndexPath(row: index, section: 0)) as! PlanTableViewCell
-//
-//            guard let title = cell.titleTextField.text,
-//                let start = cell.startTimeTextField.text,
-//                let end = cell.endTimeTextField.text,
-//                let details = cell.detailsTextView.text,
-//                let location = cell.locationTextField.text
-//
-//                else {return}
-//            plans[index].title = title
-//            plans[index].startTime = start
-//            plans[index].endTime = end
-//            plans[index].details = details
-//            plans[index].location = location
-//            plans[index].timeStamp = Date()
-//        }
-//        if plans.count != 0{
-//            agenda?.timeInterval = timePeriodTextField.text
-//            agenda?.start = startTimeTextField.text
-//            agenda?.end = startTimeTextField.text
-//            CoreDataHelper.saveProject()
-//        }
-//    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         switch identifier {
         case "save":
+            agenda?.timeInterval = timePeriodTextField.text
+            agenda?.start = startTimeTextField.text
+            agenda?.end = endTimeTextField.text
             CoreDataHelper.saveProject()
+        case "editPlan":
+            let destination = segue.destination as? DisplayPlanViewController
+            destination?.plan = self.selectedPlan
         default:
             print("error")
         }
+    }
+    
+    @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
+        CoreDataHelper.saveProject()
     }
 }
 extension DisplayAgendaViewController: UITableViewDelegate, UITableViewDataSource {
@@ -174,7 +159,6 @@ extension DisplayAgendaViewController: UITableViewDelegate, UITableViewDataSourc
         cell.startLabel.text = plan.startTime
         cell.endLabel.text = plan.endTime
         cell.locationLabel.text = plan.location
-//        cell.delegate = self
         return cell
     }
     
@@ -182,14 +166,17 @@ extension DisplayAgendaViewController: UITableViewDelegate, UITableViewDataSourc
         return 300
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "planTableViewCell", for: indexPath) as! PlanTableViewCell
-        let plan = plans[indexPath.row]
-//        plan.title = cell.titleTextField.text
-//        plan.details = cell.detailsTextView.text
-//        plan.startTime = cell.startTimeTextField.text
-//        plan.endTime = cell.endTimeTextField.text
-//        plan.location = cell.locationTextField.text
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedPlan = plans[indexPath.row]
+        self.performSegue(withIdentifier: "editPlan", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let deletedPlan = plans[indexPath.row]
+            CoreDataHelper.delete(plan: deletedPlan)
+            plans = agenda?.plan?.allObjects as! [Plan]
+        }
     }
 }
 
@@ -204,11 +191,3 @@ extension DisplayAgendaViewController {
     }
 }
 
-//extension DisplayAgendaViewController: PlanTableViewCellDelegate {
-//    func didEndEditing(_ cell: PlanTableViewCell) {
-//        let index = cell.endTimeTextField.tag
-//        
-//        print("saving data")
-//    }
-//    
-//}
