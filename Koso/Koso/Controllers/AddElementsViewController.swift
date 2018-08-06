@@ -22,7 +22,8 @@ class AddElementsViewController: UIViewController {
     }
     
     @IBAction func addToDoButtonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "createToDo", sender: self)
+        //self.performSegue(withIdentifier: "createToDo", sender: self)
+        print("add todo")
     }
     
     @IBAction func addListButtonPressed(_ sender: UIButton) {
@@ -33,10 +34,14 @@ class AddElementsViewController: UIViewController {
     }
     
     @IBAction func addAgendaButtonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "createAgenda", sender: self)    }
+        //self.performSegue(withIdentifier: "createAgenda", sender: self)
+        print("add agenda")
+    }
+        
     
     @IBAction func addNoteButtonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "createNote", sender: self)
+        print("add note")
+        //self.performSegue(withIdentifier: "createNote", sender: self)
     }
     
 //    @IBAction func cancelNewElementButtonPressed(_ sender: Any) {
@@ -48,12 +53,13 @@ class AddElementsViewController: UIViewController {
         
         switch identifier {
         case "backToDisplayProject":
-            let destination = segue.destination as? DisplayProjectViewController
-            if let element = selectedElement {
-                element.timeStamp = Date()
-                destination?.project?.addToElement(element)
-                CoreDataHelper.saveProject()
-            } else { return }
+//            let destination = segue.destination as? DisplayProjectViewController
+//            if let element = selectedElement {
+//                element.timeStamp = Date()
+//                destination?.project?.addToElement(element)
+//                CoreDataHelper.saveProject()
+//            } else { return }
+            print("going back")
         case "createToDo":
             let destination = segue.destination as? DisplayToDoViewController
             let todo = CoreDataHelper.newToDo()
