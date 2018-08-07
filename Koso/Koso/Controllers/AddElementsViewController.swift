@@ -14,12 +14,36 @@ class AddElementsViewController: UIViewController {
     var selectedElement: Element?
     
     @IBOutlet weak var addToDoButton: UIButton!
-    @IBOutlet weak var addListButton: UIButton!
     @IBOutlet weak var addAgendaButton: UIButton!
     @IBOutlet weak var addNoteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+    }
+    
+    func setupViews() {
+        addToDoButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        addToDoButton.layer.shadowOpacity = 0.05
+        addToDoButton.layer.shadowColor = UIColor.black.cgColor
+        addToDoButton.layer.shadowRadius = 35
+        addToDoButton.layer.cornerRadius = 8
+        addToDoButton.layer.masksToBounds = true
+        
+        addAgendaButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        addAgendaButton.layer.shadowOpacity = 0.05
+        addAgendaButton.layer.shadowColor = UIColor.black.cgColor
+        addAgendaButton.layer.shadowRadius = 35
+        addAgendaButton.layer.cornerRadius = 8
+        addAgendaButton.layer.masksToBounds = true
+        
+        addNoteButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        addNoteButton.layer.shadowOpacity = 0.05
+        addNoteButton.layer.shadowColor = UIColor.black.cgColor
+        addNoteButton.layer.shadowRadius = 35
+        addNoteButton.layer.cornerRadius = 8
+        addNoteButton.layer.masksToBounds = true
+        
     }
     
     @IBAction func addToDoButtonPressed(_ sender: UIButton) {

@@ -47,23 +47,14 @@ class DisplayAgendaViewController: UIViewController {
         endTimeTextField.text = agenda?.end
     }
     
-//    func createNewPlan(){
-//        let plan = CoreDataHelper.newPlan()
-//        plan.title = ""
-//        plan.details = ""
-//        plan.endTime = ""
-//        plan.startTime = ""
-//        plan.timeStamp = Date()
-//        plan.location = ""
-//        agenda?.addToPlan(plan)
-//
-//    }
     @IBAction func addPlanButtonPressed(_ sender: UIBarButtonItem) {
         // Create the alert controller
-        let alertController = UIAlertController(title: "New Plan", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Create New Plan", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.view.tintColor = .tcDarkGrey
         
         let subview = (alertController.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
-        subview.backgroundColor = UIColor(red: 201/255, green: 200/255, blue: 209/255, alpha: 1)
+        subview.backgroundColor = UIColor(red: 254, green: 254, blue: 254, alpha: 1)
         //title
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Enter Title"
@@ -83,7 +74,7 @@ class DisplayAgendaViewController: UIViewController {
         }
     
         // Create the actions
-        let okAction = UIAlertAction(title: "ADD", style: UIAlertActionStyle.default) {
+        let okAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default) {
             UIAlertAction in
             let title = alertController.textFields![0] as UITextField?
             let location = alertController.textFields![1] as UITextField?

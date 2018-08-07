@@ -49,9 +49,10 @@ class DisplayToDoViewController: UIViewController {
     @IBAction func addToDoButtonPressed(_ sender: UIBarButtonItem) {
         // Create the alert controller
         let alertController = UIAlertController(title: "What do you need to do?", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.view.tintColor = .tcDarkGrey
         
         let subview = (alertController.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
-        subview.backgroundColor = UIColor(red: 201/255, green: 200/255, blue: 209/255, alpha: 1)
+        subview.backgroundColor = UIColor(red: 254, green: 254, blue: 254, alpha: 1)
         //title
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "ex. wash dishes"

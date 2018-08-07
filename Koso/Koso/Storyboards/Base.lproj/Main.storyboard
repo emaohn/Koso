@@ -61,7 +61,7 @@
                                         <rect key="frame" x="8" y="19" width="147" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.16078431369999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.42352941179999998" green="0.56862745100000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gPN-RX-GZH">
@@ -909,7 +909,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIe-PP-6np">
-                                                                    <rect key="frame" x="15" y="11" width="59" height="39"/>
+                                                                    <rect key="frame" x="15" y="11" width="345" height="39"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                                     <color key="textColor" red="0.42352941179999998" green="0.56862745100000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -934,6 +934,7 @@
                                                             </subviews>
                                                         </tableViewCellContentView>
                                                         <connections>
+                                                            <outlet property="noteTextField" destination="fo2-CX-uqe" id="RzS-D9-LjC"/>
                                                             <outlet property="titleLabel" destination="CIe-PP-6np" id="ONY-uG-gzI"/>
                                                         </connections>
                                                     </tableViewCell>
@@ -1003,14 +1004,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="qb0-5M-qw1">
-                                <rect key="frame" x="87.5" y="230.5" width="200" height="270"/>
+                                <rect key="frame" x="72.5" y="215.5" width="230" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQC-kf-bv0">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="230" height="60"/>
                                         <color key="backgroundColor" red="0.42352941179999998" green="0.56862745100000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Lac-AR-jrR"/>
+                                            <constraint firstAttribute="height" constant="60" id="Lac-AR-jrR"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="25"/>
                                         <state key="normal" title="CREATE TASK">
                                             <color key="titleColor" red="1" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -1020,8 +1022,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vii-mg-xjl">
-                                        <rect key="frame" x="0.0" y="110" width="200" height="50"/>
+                                        <rect key="frame" x="0.0" y="120" width="230" height="60"/>
                                         <color key="backgroundColor" red="0.42352941179999998" green="0.56862745100000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="25"/>
                                         <state key="normal" title="CREATE NOTE">
                                             <color key="titleColor" red="1" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -1030,9 +1033,10 @@
                                             <segue destination="f4l-qk-pNX" kind="show" identifier="createNote" id="8r8-zX-DM1"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pup-hj-0Ii">
-                                        <rect key="frame" x="0.0" y="220" width="200" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pup-hj-0Ii">
+                                        <rect key="frame" x="0.0" y="240" width="230" height="60"/>
                                         <color key="backgroundColor" red="0.42352941179999998" green="0.56862745100000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="25"/>
                                         <state key="normal" title="CREATE AGENDA">
                                             <color key="titleColor" red="1" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -1043,7 +1047,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="2oT-Lf-2Jr"/>
+                                    <constraint firstAttribute="width" constant="230" id="2oT-Lf-2Jr"/>
                                     <constraint firstItem="Pup-hj-0Ii" firstAttribute="width" secondItem="qb0-5M-qw1" secondAttribute="width" id="3py-mF-yWP"/>
                                     <constraint firstItem="XQC-kf-bv0" firstAttribute="width" secondItem="qb0-5M-qw1" secondAttribute="width" id="J6c-cR-TXh"/>
                                     <constraint firstItem="Vii-mg-xjl" firstAttribute="height" secondItem="XQC-kf-bv0" secondAttribute="height" id="ibc-wh-IzQ"/>
@@ -1104,19 +1108,19 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyL-Xs-ndY">
                                                             <rect key="frame" x="0.0" y="0.0" width="210" height="63.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                            <color key="textColor" red="0.16078431372549018" green="0.19215686274509802" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.38431372549999998" green="0.73333333329999995" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYD-mi-quU">
                                                             <rect key="frame" x="0.0" y="63.5" width="210" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.16078431369999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.36470588240000001" green="0.45098039220000002" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Due" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHd-qH-Apd">
                                                             <rect key="frame" x="0.0" y="84" width="210" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.16078431369999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.36470588240000001" green="0.45098039220000002" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -1132,13 +1136,13 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjK-LN-VBZ">
                                                             <rect key="frame" x="0.0" y="0.0" width="75" height="44.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="37"/>
-                                                            <color key="textColor" red="0.16078431369999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.42352941179999998" green="0.56862745100000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="days left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="75" translatesAutoresizingMaskIntoConstraints="NO" id="Gku-ga-Im8">
                                                             <rect key="frame" x="0.0" y="44.5" width="75" height="19.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <color key="textColor" red="0.16078431369999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.42352941179999998" green="0.56862745100000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>

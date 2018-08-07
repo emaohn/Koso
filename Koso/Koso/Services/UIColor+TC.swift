@@ -15,7 +15,7 @@ extension UIColor {
     }
     
     static var tcBlueGrey: UIColor {
-        return UIColor(red: 93/255, green: 115/255, blue: 26/255, alpha: 1)
+        return UIColor(red: 93/255, green: 115/255, blue: 126/255, alpha: 1)
     }
     
     static var tcOffWhite: UIColor {

@@ -40,7 +40,7 @@
         <element name="Element" positionX="-90" positionY="-135" width="128" height="90"/>
         <element name="Note" positionX="-227" positionY="-45" width="128" height="58"/>
         <element name="Plan" positionX="-369" positionY="54" width="128" height="150"/>
-        <element name="Project" positionX="79" positionY="-100" width="128" height="118"/>
+        <element name="Project" positionX="79" positionY="-100" width="128" height="120"/>
         <element name="ToDo" positionX="-81" positionY="176" width="128" height="90"/>
     </elements>
 </model>

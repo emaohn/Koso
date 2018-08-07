@@ -37,7 +37,7 @@ class DisplayProjectViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         titleLabel.text = project?.name
-        elements = project?.element?.allObjects as! [Element]
+        reloadElements()
     }
     
     func reloadElements() {
@@ -49,7 +49,9 @@ class DisplayProjectViewController: UIViewController {
         } else {
             elements = myElements
         }
+        elementsTableView.reloadData()
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         switch identifier {
@@ -76,7 +78,8 @@ class DisplayProjectViewController: UIViewController {
     }
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
-        elements = project?.element?.allObjects as! [Element]
+        reloadElements()
+        CoreDataHelper.saveProject()
     }
 }
 
@@ -111,9 +114,8 @@ extension DisplayProjectViewController: UITableViewDelegate, UITableViewDataSour
         } else if let note = element as? Note {
             let cell = tableView.dequeueReusableCell(withIdentifier: "note", for: indexPath) as! NoteTableViewCell
             cell.titleLabel.text = note.title
-            if let note = note.note {
-                cell.noteLabel.text = note
-            }
+            cell.noteTextField.text = note.note
+    
             return cell
         }
         return UITableViewCell()
@@ -141,5 +143,15 @@ extension DisplayProjectViewController: UITableViewDelegate, UITableViewDataSour
             elements = project?.element?.allObjects as! [Element]
         }
     }
-    
+}
+
+extension DisplayProjectViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DisplayProjectViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
