@@ -33,6 +33,7 @@
 		E8E6B51C210BBC69006C117E /* DisplayNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E6B51B210BBC69006C117E /* DisplayNoteViewController.swift */; };
 		E8E6B51E2111F5D6006C117E /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E6B51D2111F5D6006C117E /* PlanTableViewCell.swift */; };
 		E8FB9D732118CBCF00ABBC61 /* UIColor+TC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FB9D722118CBCF00ABBC61 /* UIColor+TC.swift */; };
+		E8FB9D75211A289D00ABBC61 /* taskBreakdownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FB9D74211A289D00ABBC61 /* taskBreakdownTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		E8E6B51B210BBC69006C117E /* DisplayNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNoteViewController.swift; sourceTree = "<group>"; };
 		E8E6B51D2111F5D6006C117E /* PlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
 		E8FB9D722118CBCF00ABBC61 /* UIColor+TC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+TC.swift"; sourceTree = "<group>"; };
+		E8FB9D74211A289D00ABBC61 /* taskBreakdownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskBreakdownTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				E8780E232108E92B00113C69 /* AgendaTableViewCell.swift */,
 				E8E6B51D2111F5D6006C117E /* PlanTableViewCell.swift */,
 				E837EE4F21139A66000A1CED /* TaskTableViewCell.swift */,
+				E8FB9D74211A289D00ABBC61 /* taskBreakdownTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				E8780E1E2108E8E400113C69 /* ToDoTableCellView.swift in Sources */,
 				E8E6B51A210BBC61006C117E /* DisplayAgendaViewController.swift in Sources */,
 				E82981DC2108B1FC005240EC /* Date+ConverterToString.swift in Sources */,
+				E8FB9D75211A289D00ABBC61 /* taskBreakdownTableViewCell.swift in Sources */,
 				E8946CE02107CB5200351C64 /* ProjectTableViewCell.swift in Sources */,
 				E8780E242108E92B00113C69 /* AgendaTableViewCell.swift in Sources */,
 				E8780E262108EA4A00113C69 /* AddElementsViewController.swift in Sources */,

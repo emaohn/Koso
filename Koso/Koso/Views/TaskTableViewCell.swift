@@ -16,7 +16,14 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var completionButton: UIButton!
     
     @IBAction func completionButtonPressed(_ sender: Any) {
+//        if !completionButton.isSelected {
+//            completionButton.setTitle("[✓]", for: .normal)
+//        } else {
+//            completionButton.setTitle("[  ]", for: .normal)
+//        }
+        
         completionButton.isSelected = !completionButton.isSelected
+        
         completionButtonTouched?(self)
     }
 }

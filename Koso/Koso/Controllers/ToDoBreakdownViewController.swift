@@ -30,7 +30,7 @@ class ToDoBreakdownViewController: UIViewController {
     func retrieveToDos() {
 //        todos = todo?.toDo?.allObjects as! [ToDo]
 //        tableView.reloadData()
-        guard let myTodos = self.todo?.toDo?.allObjects as? [ToDo] else {return}
+        guard let myTodos = self.todo?.toDos?.allObjects as? [ToDo] else {return}
         if (myTodos.count) > 1{
             todos = myTodos.sorted(by: { (task1, task2) -> Bool in
                 return task1.timeStamp! < task2.timeStamp!
@@ -62,7 +62,7 @@ class ToDoBreakdownViewController: UIViewController {
             todo.completed = false
             todo.timeStamp = Date()
             
-            self.todo?.addToToDo(todo)
+            self.todo?.addToToDos(todo)
             self.retrieveToDos()
         }
         
@@ -85,6 +85,7 @@ class ToDoBreakdownViewController: UIViewController {
         case "save":
             todo?.title = taskTitleTextField.text
             CoreDataHelper.saveProject()
+            //segue.destination = DisplayToDoViewController
         default:
             print("error")
         }
@@ -101,7 +102,8 @@ extension ToDoBreakdownViewController: UITableViewDelegate, UITableViewDataSourc
         let cell1 = tableView.dequeueReusableCell(withIdentifier: "taskTableViewCell", for: indexPath) as! TaskTableViewCell
         let task = todos[indexPath.row]
         cell1.taskLabel.text = task.title
-        cell1.completionButtonTouched = {(cell) in guard tableView.indexPath(for: cell) != nil
+        cell1.completionButtonTouched = {(cell) in
+            guard tableView.indexPath(for: cell) != nil
             else { return }
             if !task.completed {
                 task.completed = true
@@ -118,7 +120,7 @@ extension ToDoBreakdownViewController: UITableViewDelegate, UITableViewDataSourc
         if editingStyle == .delete {
             let deletedTask = todos[indexPath.row]
             CoreDataHelper.delete(todo: deletedTask)
-            todos = todo?.toDo?.allObjects as! [ToDo]
+            todos = todo?.toDos?.allObjects as! [ToDo]
         }
     }
 }

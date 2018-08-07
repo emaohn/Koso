@@ -19,9 +19,54 @@ class NewProjectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
         hideKeyboardWhenTappedAround()
+        
+        //Listen for keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
+    func setup() {
+        descriptionView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        descriptionView.layer.shadowOpacity = 0.05
+        descriptionView.layer.shadowColor = UIColor.black.cgColor
+        descriptionView.layer.shadowRadius = 35
+        descriptionView.layer.cornerRadius = 8
+        descriptionView.layer.masksToBounds = true
+        
+        nameDateView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        nameDateView.layer.shadowOpacity = 0.05
+        nameDateView.layer.shadowColor = UIColor.black.cgColor
+        nameDateView.layer.shadowRadius = 35
+        nameDateView.layer.cornerRadius = 8
+        nameDateView.layer.masksToBounds = true
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
+
+
+    @objc func keyboardWillChange(notification: Notification) {
+        print("Keyboard will show: \(notification.name.rawValue)")
+
+        guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+
+        if notification.name == Notification.Name.UIKeyboardWillShow ||
+            notification.name == Notification.Name.UIKeyboardWillChangeFrame {
+            //view.frame.origin.y = -keyboardRect.height + 64
+            view.frame.origin.y = -keyboardRect.height  + 128
+        } else {
+            view.frame.origin.y = 128
+        }
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         switch identifier {

@@ -60,6 +60,7 @@ class DisplayProjectViewController: UIViewController {
             destination?.project = self.project
         case "save":
             project?.name = titleLabel.text
+            project?.projectDescription = projectDescriptionLabel.text
             CoreDataHelper.saveProject()
         case "back":
             print("boing back to main page")
@@ -99,6 +100,15 @@ extension DisplayProjectViewController: UITableViewDelegate, UITableViewDataSour
             if let deadline = todo.deadline {
                 cell.dueDateLabel.text = "Completed by: " + deadline.convertToString()
             }
+            var incompletedItems  = ""
+            for todo in (todo.toDos?.allObjects as? [ToDo])! {
+                if !todo.completed {
+                    if let title = todo.title {
+                        incompletedItems += title + ", "
+                    }
+                }
+            }
+            cell.incompletedItemsLabel.text = "Incompleted items: \(incompletedItems)"
             return cell
         } else if let agenda = element as? Agenda {
             let cell = tableView.dequeueReusableCell(withIdentifier: "agenda", for: indexPath) as! AgendaTableViewCell
@@ -107,7 +117,9 @@ extension DisplayProjectViewController: UITableViewDelegate, UITableViewDataSour
             cell.endDateLabel.text = agenda.end
             var planLabel: String = "Plans: "
             for plan in (agenda.plan?.allObjects as? [Plan])! {
-                planLabel += " \(String(describing: plan.title))"
+                if let title = plan.title {
+                    planLabel += title + ", " 
+                }
             }
             cell.plansLabel.text = planLabel
             return cell

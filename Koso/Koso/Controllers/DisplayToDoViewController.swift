@@ -29,12 +29,13 @@ class DisplayToDoViewController: UIViewController {
         super.viewWillAppear(animated)
         titleTextField.text = todo?.title
         retrieveToDos()
+        deadlineDatePicker.date = (todo?.deadline)!
     }
     
     func retrieveToDos() {
 //        todos = todo?.toDo?.allObjects as! [ToDo]
 //        toDoTableView.reloadData()
-        guard let myTodos = self.todo?.toDo?.allObjects as? [ToDo] else {return}
+        guard let myTodos = self.todo?.toDos?.allObjects as? [ToDo] else {return}
         if (myTodos.count) > 1{
             todos = myTodos.sorted(by: { (task1, task2) -> Bool in
                 return task1.timeStamp! < task2.timeStamp!
@@ -68,7 +69,7 @@ class DisplayToDoViewController: UIViewController {
             task.completed = false
             task.timeStamp = Date()
 
-            self.todo?.addToToDo(task)
+            self.todo?.addToToDos(task)
             self.retrieveToDos()
         }
         
@@ -117,8 +118,14 @@ extension DisplayToDoViewController: UITableViewDelegate, UITableViewDataSource 
         let cell1 = tableView.dequeueReusableCell(withIdentifier: "taskTableViewCell", for: indexPath) as! TaskTableViewCell
         let task = todos[indexPath.row]
         cell1.taskLabel.text = task.title
-        
-        cell1.completionButtonTouched = {(cell) in guard tableView.indexPath(for: cell) != nil
+        //cell1.completionButton.adjustsImageWhenHighlighted = false
+        if task.completed {
+            cell1.completionButton.setTitle("[✓]", for: .normal)
+        } else {
+            cell1.completionButton.setTitle("[  ]", for: .normal)
+        }
+        cell1.completionButtonTouched = {(cell) in
+            guard self.toDoTableView.indexPath(for: cell) != nil
             else { return }
             if !task.completed {
                 task.completed = true
@@ -140,7 +147,7 @@ extension DisplayToDoViewController: UITableViewDelegate, UITableViewDataSource 
         if editingStyle == .delete {
             let deletedTask = todos[indexPath.row]
             CoreDataHelper.delete(todo: deletedTask)
-            todos = todo?.toDo?.allObjects as! [ToDo]
+            retrieveToDos()
         }
     }
 }

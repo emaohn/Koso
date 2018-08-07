@@ -18,8 +18,8 @@ class ProjectManagerViewController: UIViewController {
     
     @IBOutlet weak var projectTableView: UITableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         projects = CoreDataHelper.retrieveProjects()
     }
@@ -56,8 +56,10 @@ extension ProjectManagerViewController: UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "existingProject", for: indexPath) as! ProjectTableviewCell
         let project = projects[indexPath.row]
         cell.titleLabel.text = project.name
-        cell.dueDateLabel.text = project.dueDate?.convertToString()
-        cell.numDaysLeftLabel.text = String(project.numDaysLeft)
+        cell.dueDateLabel.text = "Due " + (project.dueDate?.convertToString())!
+        if let numDaysLeft = project.dueDate?.interval(ofComponent: .day, fromDate: Date()) {
+            cell.numDaysLeftLabel.text = "\(numDaysLeft)"
+        }
         cell.projectDescriptionLabel.text = project.projectDescription
         
         return cell

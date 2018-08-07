@@ -18,6 +18,14 @@ class DisplayNoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
+        noteTextView.keyboardDismissMode = .onDrag
+        
+        noteTextView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        noteTextView.layer.shadowOpacity = 0.05
+        noteTextView.layer.shadowColor = UIColor.black.cgColor
+        noteTextView.layer.shadowRadius = 35
+        noteTextView.layer.cornerRadius = 8
+        noteTextView.layer.masksToBounds = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

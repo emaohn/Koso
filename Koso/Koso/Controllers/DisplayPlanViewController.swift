@@ -24,8 +24,31 @@ class DisplayPlanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
+        setup()
     }
     
+    func setup() {
+        headerView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        headerView.layer.shadowOpacity = 0.05
+        headerView.layer.shadowColor = UIColor.black.cgColor
+        headerView.layer.shadowRadius = 35
+        headerView.layer.cornerRadius = 8
+        headerView.layer.masksToBounds = true
+        
+        detailsView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        detailsView.layer.shadowOpacity = 0.05
+        detailsView.layer.shadowColor = UIColor.black.cgColor
+        detailsView.layer.shadowRadius = 35
+        detailsView.layer.cornerRadius = 8
+        detailsView.layer.masksToBounds = true
+        
+        detailsTextView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        detailsTextView.layer.shadowOpacity = 0.05
+        detailsTextView.layer.shadowColor = UIColor.black.cgColor
+        detailsTextView.layer.shadowRadius = 35
+        detailsTextView.layer.cornerRadius = 8
+        detailsTextView.layer.masksToBounds = true
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let plan = plan else {return}
