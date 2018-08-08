@@ -138,7 +138,7 @@ extension ToDoBreakdownViewController: UITableViewDelegate, UITableViewDataSourc
         if editingStyle == .delete {
             let deletedTask = todos[indexPath.row]
             CoreDataHelper.delete(todo: deletedTask)
-            todos = todo?.toDos?.allObjects as! [ToDo]
+            retrieveToDos()
         }
     }
 }
