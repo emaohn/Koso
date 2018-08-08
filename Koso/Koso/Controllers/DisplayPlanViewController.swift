@@ -18,15 +18,30 @@ class DisplayPlanViewController: UIViewController {
     @IBOutlet weak var endTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     
+    @IBOutlet weak var navigationBar: UINavigationItem!
+    
     @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var detailsTextView: UITextView!
+    
+    var isTop = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         setup()
+        
+        let hideKeyboard = UITapGestureRecognizer(target: self, action: #selector(self.navigationBarTap))
+        hideKeyboard.numberOfTapsRequired = 1
+        navigationController?.navigationBar.addGestureRecognizer(hideKeyboard)
     }
     
+    @objc func navigationBarTap(_ recognizer: UIGestureRecognizer) {
+        view.endEditing(true)
+        // OR  USE  yourSearchBarName.endEditing(true)
+        
+    }
+    
+
     func setup() {
         headerView.layer.shadowOffset = CGSize(width: 0, height: 1)
         headerView.layer.shadowOpacity = 0.05
@@ -48,7 +63,67 @@ class DisplayPlanViewController: UIViewController {
         detailsTextView.layer.shadowRadius = 35
         detailsTextView.layer.cornerRadius = 15
         detailsTextView.layer.masksToBounds = true
+        
+        //Listen for keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    @IBAction func titleBegin(_ sender: Any) {
+        isTop = true
+    }
+    @IBAction func titleEnd(_ sender: Any) {
+        isTop = false
+    }
+    @IBAction func locationBegin(_ sender: Any) {
+        isTop = true
+    }
+    @IBAction func locationEnd(_ sender: Any) {
+        isTop = false
+    }
+    @IBAction func startBegin(_ sender: Any) {
+        isTop = true
+    }
+    @IBAction func startEnd(_ sender: Any) {
+        isTop = false
+    }
+    @IBAction func endBegin(_ sender: Any) {
+        isTop = true
+    }
+    @IBAction func endEnd(_ sender: Any) {
+        isTop = false
+    }
+    
+
+    
+    @objc func keyboardWillChange(notification: Notification) {
+        if isTop != true{
+            print("Keyboard will show: \(notification.name.rawValue)")
+            
+            
+            
+        guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+                return
+            }
+            
+            if notification.name == Notification.Name.UIKeyboardWillShow ||
+                notification.name == Notification.Name.UIKeyboardWillChangeFrame {
+                //view.frame.origin.y = -keyboardRect.height + 64
+                view.frame.origin.y = -keyboardRect.height  + 128
+            } else {
+                view.frame.origin.y = 115
+            }
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let plan = plan else {return}

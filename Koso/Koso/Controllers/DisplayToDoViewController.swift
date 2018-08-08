@@ -23,6 +23,10 @@ class DisplayToDoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
+        
+        let hideKeyboard = UITapGestureRecognizer(target: self, action: #selector(self.navigationBarTap))
+        hideKeyboard.numberOfTapsRequired = 1
+        navigationController?.navigationBar.addGestureRecognizer(hideKeyboard)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,6 +35,12 @@ class DisplayToDoViewController: UIViewController {
         retrieveToDos()
         guard let deadline = todo?.deadline else {return}
         deadlineDatePicker.date = deadline
+    }
+    
+    @objc func navigationBarTap(_ recognizer: UIGestureRecognizer) {
+        view.endEditing(true)
+        // OR  USE  yourSearchBarName.endEditing(true)
+        
     }
     
     func retrieveToDos() {
@@ -64,14 +74,17 @@ class DisplayToDoViewController: UIViewController {
         let okAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default) {
             UIAlertAction in
             let todoTextField = alertController.textFields![0] as UITextField?
+            
+            if todoTextField?.text != "" {
+                let task = CoreDataHelper.newToDo()
+        
+                task.title = todoTextField?.text
+                task.completed = false
+                task.timeStamp = Date()
 
-            let task = CoreDataHelper.newToDo()
-            task.title = todoTextField?.text
-            task.completed = false
-            task.timeStamp = Date()
-
-            self.todo?.addToToDos(task)
-            self.retrieveToDos()
+                self.todo?.addToToDos(task)
+                self.retrieveToDos()
+            }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {

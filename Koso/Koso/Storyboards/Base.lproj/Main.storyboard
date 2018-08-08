@@ -34,6 +34,10 @@
                                                         <color key="textColor" red="0.16078431369999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="didStop:" destination="Y4j-4f-9gq" eventType="editingDidEnd" id="HSr-vv-Cpm"/>
+                                                            <action selector="topFieldFunc:" destination="Y4j-4f-9gq" eventType="editingDidBegin" id="1k5-Lm-tpl"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -150,12 +154,20 @@
                                                 <color key="textColor" red="0.38431372549999998" green="0.73333333329999995" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="32"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="titleBegin:" destination="jUm-GV-jfb" eventType="editingDidBegin" id="oUB-Km-FUG"/>
+                                                    <action selector="titleEnd:" destination="jUm-GV-jfb" eventType="editingDidEnd" id="mdU-br-ctV"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mpP-1l-qZl">
                                                 <rect key="frame" x="0.0" y="55" width="325" height="28"/>
                                                 <color key="textColor" red="0.42352941179999998" green="0.56862745100000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="locationBegin:" destination="jUm-GV-jfb" eventType="editingDidBegin" id="y5C-Ig-lJe"/>
+                                                    <action selector="locationEnd:" destination="jUm-GV-jfb" eventType="editingDidEnd" id="405-T1-iK0"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -167,12 +179,20 @@
                                                 <color key="textColor" red="0.36470588240000001" green="0.45098039220000002" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="startBegin:" destination="jUm-GV-jfb" eventType="editingDidBegin" id="HEB-3W-A8d"/>
+                                                    <action selector="startEnd:" destination="jUm-GV-jfb" eventType="editingDidEnd" id="oXi-37-cUB"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="End Time/Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iWc-hU-V2H">
                                                 <rect key="frame" x="162.5" y="0.0" width="162.5" height="28"/>
                                                 <color key="textColor" red="0.36470588240000001" green="0.45098039220000002" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="endBegin:" destination="jUm-GV-jfb" eventType="editingDidBegin" id="Zyd-BW-xgD"/>
+                                                    <action selector="endEnd:" destination="jUm-GV-jfb" eventType="editingDidEnd" id="cMw-8C-xPy"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -251,6 +271,7 @@
                         <outlet property="endTextField" destination="iWc-hU-V2H" id="N3h-Fu-gYx"/>
                         <outlet property="headerView" destination="rhF-Qi-gbY" id="4z6-kP-mUO"/>
                         <outlet property="locationTextField" destination="mpP-1l-qZl" id="Dv9-rW-A3a"/>
+                        <outlet property="navigationBar" destination="pBG-NP-7JK" id="tPr-BH-diT"/>
                         <outlet property="startTextField" destination="EkK-5c-Tru" id="nXa-30-Yq4"/>
                         <outlet property="titleTextField" destination="MUn-52-Ar1" id="dKi-VG-j01"/>
                     </connections>
@@ -1362,7 +1383,7 @@
         <image name="next" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="whd-bK-ELV"/>
+        <segue reference="WUj-cL-4aX"/>
         <segue reference="R2J-D1-euz"/>
         <segue reference="3IJ-DC-Fmj"/>
         <segue reference="XWG-r3-lgn"/>

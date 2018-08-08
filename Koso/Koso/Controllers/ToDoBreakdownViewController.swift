@@ -20,6 +20,16 @@ class ToDoBreakdownViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
+        
+        let hideKeyboard = UITapGestureRecognizer(target: self, action: #selector(self.navigationBarTap))
+        hideKeyboard.numberOfTapsRequired = 1
+        navigationController?.navigationBar.addGestureRecognizer(hideKeyboard)
+    }
+    
+    @objc func navigationBarTap(_ recognizer: UIGestureRecognizer) {
+        view.endEditing(true)
+        // OR  USE  yourSearchBarName.endEditing(true)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,13 +67,15 @@ class ToDoBreakdownViewController: UIViewController {
             UIAlertAction in
             let todoTextField = alertController.textFields![0] as UITextField?
             
-            let todo = CoreDataHelper.newToDo()
-            todo.title = todoTextField?.text
-            todo.completed = false
-            todo.timeStamp = Date()
-            
-            self.todo?.addToToDos(todo)
-            self.retrieveToDos()
+            if todoTextField?.text != "" {
+                let todo = CoreDataHelper.newToDo()
+                todo.title = todoTextField?.text
+                todo.completed = false
+                todo.timeStamp = Date()
+                
+                self.todo?.addToToDos(todo)
+                self.retrieveToDos()
+            }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {

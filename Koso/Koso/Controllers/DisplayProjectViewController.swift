@@ -25,6 +25,9 @@ class DisplayProjectViewController: UIViewController {
     @IBOutlet weak var deadlineLabel: UILabel!
     @IBOutlet weak var numDaysLeftLabel: UILabel!
     @IBOutlet weak var projectDescriptionLabel: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,20 @@ class DisplayProjectViewController: UIViewController {
         deadlineLabel.text = project?.dueDate?.convertToString()
        // numDaysLeftLabel.text = "\(String(describing: project?.numDaysLeft))"
         projectDescriptionLabel.text = project?.projectDescription
+        
+        let hideKeyboard = UITapGestureRecognizer(target: self, action: #selector(self.navigationBarTap))
+        hideKeyboard.numberOfTapsRequired = 1
+        navigationController?.navigationBar.addGestureRecognizer(hideKeyboard)
+        
+//        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 100)
+//        scrollView.isScrollEnabled = true
+        
+    }
+    
+    @objc func navigationBarTap(_ recognizer: UIGestureRecognizer) {
+        view.endEditing(true)
+        // OR  USE  yourSearchBarName.endEditing(true)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

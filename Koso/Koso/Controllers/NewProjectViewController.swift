@@ -19,6 +19,7 @@ class NewProjectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
         hideKeyboardWhenTappedAround()
         
@@ -26,6 +27,26 @@ class NewProjectViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
+
+        let hideKeyboard = UITapGestureRecognizer(target: self, action: #selector(self.navigationBarTap))
+        hideKeyboard.numberOfTapsRequired = 1
+        navigationController?.navigationBar.addGestureRecognizer(hideKeyboard)
+    }
+    
+    @objc func navigationBarTap(_ recognizer: UIGestureRecognizer) {
+        view.endEditing(true)
+        // OR  USE  yourSearchBarName.endEditing(true)
+        
+    }
+    
+    var isTop = false
+    
+    @IBAction func topFieldFunc(_ sender: Any) {
+        isTop = true
+    }
+    @IBAction func didStop(_ sender: Any) {
+        isTop = false
     }
     
     func setup() {
@@ -57,9 +78,15 @@ class NewProjectViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
 
+
+    
+    
     @objc func keyboardWillChange(notification: Notification) {
+        if isTop != true{
         print("Keyboard will show: \(notification.name.rawValue)")
 
+        
+        
         guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
         }
@@ -71,6 +98,7 @@ class NewProjectViewController: UIViewController {
         } else {
             view.frame.origin.y = 115
         }
+    }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

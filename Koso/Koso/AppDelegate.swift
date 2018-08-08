@@ -9,10 +9,17 @@
 import UIKit
 import CoreData
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    @objc func navigationBarTap(_ recognizer: UIGestureRecognizer) {
+        recognizer.view?.superview?.endEditing(true)
+        // OR  USE  yourSearchBarName.endEditing(true)
+        
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -31,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.tcOffWhite]
         //status bar light
         UIApplication.shared.statusBarStyle = .lightContent
+        
+
         return true
     }
 
