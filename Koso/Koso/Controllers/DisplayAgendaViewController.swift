@@ -32,13 +32,13 @@ class DisplayAgendaViewController: UIViewController {
         super.viewDidLoad()
         planTableView.keyboardDismissMode = .onDrag
         hideKeyboardWhenTappedAround()
+        setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //planTableView.keyboardDismissMode = .interactive
         reloadPlans()
-        setup()
     }
     
     func setup() {
@@ -127,6 +127,10 @@ class DisplayAgendaViewController: UIViewController {
             agenda?.end = endTimeTextField.text
             CoreDataHelper.saveProject()
         case "editPlan":
+            agenda?.timeInterval = timePeriodTextField.text
+            agenda?.start = startTimeTextField.text
+            agenda?.end = endTimeTextField.text
+            CoreDataHelper.saveProject()
             let destination = segue.destination as? DisplayPlanViewController
             destination?.plan = self.selectedPlan
         case "cancel":

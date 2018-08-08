@@ -28,6 +28,11 @@ class DisplayNoteViewController: UIViewController {
         noteTextView.layer.masksToBounds = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        titleTextField.text = note?.title
+        noteTextView.text = note?.note
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         switch identifier {

@@ -29,7 +29,8 @@ class DisplayToDoViewController: UIViewController {
         super.viewWillAppear(animated)
         titleTextField.text = todo?.title
         retrieveToDos()
-        deadlineDatePicker.date = (todo?.deadline)!
+        guard let deadline = todo?.deadline else {return}
+        deadlineDatePicker.date = deadline
     }
     
     func retrieveToDos() {
@@ -86,25 +87,30 @@ class DisplayToDoViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func save() {
+        self.todo?.title = titleTextField.text
+        self.todo?.deadline = deadlineDatePicker.date
+        CoreDataHelper.saveProject()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         switch  identifier {
         case "saveToDo":
-            self.todo?.title = titleTextField.text
-            self.todo?.deadline = deadlineDatePicker.date
-            CoreDataHelper.saveProject()
+            save()
        case "taskBreakDown":
+            save()
             guard let todo = selectedToDo else {return}
             let destination = segue.destination as? ToDoBreakdownViewController
                 destination?.todo = todo
         case "cancel":
-            print("cancel")
+            save()
         default:
             print("error")
         }
     }
-    
-    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+
+    @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
         CoreDataHelper.saveProject()
     }
 }

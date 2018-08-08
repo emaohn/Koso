@@ -32,21 +32,21 @@ class DisplayPlanViewController: UIViewController {
         headerView.layer.shadowOpacity = 0.05
         headerView.layer.shadowColor = UIColor.black.cgColor
         headerView.layer.shadowRadius = 35
-        headerView.layer.cornerRadius = 8
+        headerView.layer.cornerRadius = 15
         headerView.layer.masksToBounds = true
         
         detailsView.layer.shadowOffset = CGSize(width: 0, height: 1)
         detailsView.layer.shadowOpacity = 0.05
         detailsView.layer.shadowColor = UIColor.black.cgColor
         detailsView.layer.shadowRadius = 35
-        detailsView.layer.cornerRadius = 8
+        detailsView.layer.cornerRadius = 15
         detailsView.layer.masksToBounds = true
         
         detailsTextView.layer.shadowOffset = CGSize(width: 0, height: 1)
         detailsTextView.layer.shadowOpacity = 0.05
         detailsTextView.layer.shadowColor = UIColor.black.cgColor
         detailsTextView.layer.shadowRadius = 35
-        detailsTextView.layer.cornerRadius = 8
+        detailsTextView.layer.cornerRadius = 15
         detailsTextView.layer.masksToBounds = true
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -54,8 +54,9 @@ class DisplayPlanViewController: UIViewController {
         guard let plan = plan else {return}
         titleTextField.text = plan.title
         locationTextField.text = plan.location
-        startTextField.text = plan.startTime
-        endTextField.text = plan.endTime
+        guard let start = plan.startTime, let end = plan.endTime else {return}
+        startTextField.text = start
+        endTextField.text = end
         detailsTextView.text = plan.details
     }
     

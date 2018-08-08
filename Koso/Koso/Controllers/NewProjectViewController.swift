@@ -33,15 +33,22 @@ class NewProjectViewController: UIViewController {
         descriptionView.layer.shadowOpacity = 0.05
         descriptionView.layer.shadowColor = UIColor.black.cgColor
         descriptionView.layer.shadowRadius = 35
-        descriptionView.layer.cornerRadius = 8
+        descriptionView.layer.cornerRadius = 15
         descriptionView.layer.masksToBounds = true
         
         nameDateView.layer.shadowOffset = CGSize(width: 0, height: 1)
         nameDateView.layer.shadowOpacity = 0.05
         nameDateView.layer.shadowColor = UIColor.black.cgColor
         nameDateView.layer.shadowRadius = 35
-        nameDateView.layer.cornerRadius = 8
+        nameDateView.layer.cornerRadius = 15
         nameDateView.layer.masksToBounds = true
+        
+        projectDescriptionTextField.layer.shadowOffset = CGSize(width: 0, height: 1)
+        projectDescriptionTextField.layer.shadowOpacity = 0.05
+        projectDescriptionTextField.layer.shadowColor = UIColor.black.cgColor
+        projectDescriptionTextField.layer.shadowRadius = 35
+        projectDescriptionTextField.layer.cornerRadius = 15
+        projectDescriptionTextField.layer.masksToBounds = true
     }
 
     deinit {
@@ -49,7 +56,6 @@ class NewProjectViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
-
 
     @objc func keyboardWillChange(notification: Notification) {
         print("Keyboard will show: \(notification.name.rawValue)")
@@ -63,7 +69,7 @@ class NewProjectViewController: UIViewController {
             //view.frame.origin.y = -keyboardRect.height + 64
             view.frame.origin.y = -keyboardRect.height  + 128
         } else {
-            view.frame.origin.y = 128
+            view.frame.origin.y = 115
         }
     }
 

@@ -52,18 +52,22 @@ class DisplayProjectViewController: UIViewController {
         elementsTableView.reloadData()
     }
     
+    func save() {
+        project?.name = titleLabel.text
+        project?.projectDescription = projectDescriptionLabel.text
+        CoreDataHelper.saveProject()
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         switch identifier {
         case "addItem":
+            save()
             let destination = segue.destination as? AddElementsViewController
             destination?.project = self.project
         case "save":
-            project?.name = titleLabel.text
-            project?.projectDescription = projectDescriptionLabel.text
-            CoreDataHelper.saveProject()
+            save()
         case "back":
-            print("boing back to main page")
+            save()
         case "openAgenda":
             let destination = segue.destination as? DisplayAgendaViewController
             destination?.agenda = element as? Agenda
@@ -113,8 +117,12 @@ extension DisplayProjectViewController: UITableViewDelegate, UITableViewDataSour
         } else if let agenda = element as? Agenda {
             let cell = tableView.dequeueReusableCell(withIdentifier: "agenda", for: indexPath) as! AgendaTableViewCell
             cell.timeIntervalLabel.text = agenda.timeInterval
-            cell.startDateLabel.text = agenda.start
-            cell.endDateLabel.text = agenda.end
+            if let start = agenda.start {
+                cell.startDateLabel.text = "Start: " + start
+            }
+            if let end = agenda.end {
+                cell.endDateLabel.text = "End: " + end
+            }
             var planLabel: String = "Plans: "
             for plan in (agenda.plan?.allObjects as? [Plan])! {
                 if let title = plan.title {

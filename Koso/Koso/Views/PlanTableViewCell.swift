@@ -11,6 +11,7 @@ import UIKit
 
 class PlanTableViewCell: UITableViewCell {
     
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var startLabel: UILabel!
