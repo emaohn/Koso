@@ -21,14 +21,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3wz-3d-2z5">
                                 <rect key="frame" x="24" y="94" width="327" height="256.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uby-L8-aM0">
-                                        <rect key="frame" x="5" y="8" width="317" height="64"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hG6-3v-sja">
+                                        <rect key="frame" x="5" y="5" width="317" height="246.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6QC-H3-vEY">
-                                                <rect key="frame" x="0.0" y="0.0" width="317" height="30"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uby-L8-aM0">
+                                                <rect key="frame" x="0.0" y="0.0" width="317" height="75"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name your project (ex. Trip to japan)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LzP-i6-opl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="317" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="317" height="41"/>
                                                         <color key="backgroundColor" red="1" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="textColor" red="0.16078431369999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
@@ -38,32 +38,35 @@
                                                             <action selector="topFieldFunc:" destination="Y4j-4f-9gq" eventType="editingDidBegin" id="1k5-Lm-tpl"/>
                                                         </connections>
                                                     </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the final deadline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDm-XA-DwM">
+                                                        <rect key="frame" x="0.0" y="51" width="317" height="24"/>
+                                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                                        <color key="textColor" red="0.16078431369999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="75" id="yi0-wU-yy9"/>
+                                                </constraints>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the final deadline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDm-XA-DwM">
-                                                <rect key="frame" x="0.0" y="40" width="317" height="24"/>
-                                                <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
-                                                <color key="textColor" red="0.16078431369999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZOI-cb-DzL">
+                                                <rect key="frame" x="0.0" y="75" width="317" height="171.5"/>
+                                                <color key="backgroundColor" red="1" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" red="0.16078431369999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="554220158.73143303">
+                                                    <!--2018-07-25 14:02:38 +0000-->
+                                                </date>
+                                            </datePicker>
                                         </subviews>
                                     </stackView>
-                                    <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZOI-cb-DzL">
-                                        <rect key="frame" x="20" y="66" width="290" height="176"/>
-                                        <color key="backgroundColor" red="1" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" red="0.16078431369999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="554220158.73143303">
-                                            <!--2018-07-25 14:02:38 +0000-->
-                                        </date>
-                                    </datePicker>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="uby-L8-aM0" firstAttribute="top" secondItem="3wz-3d-2z5" secondAttribute="top" constant="5" id="8ve-dk-GrZ"/>
-                                    <constraint firstItem="ZOI-cb-DzL" firstAttribute="centerX" secondItem="3wz-3d-2z5" secondAttribute="centerX" id="MMU-OW-YEP"/>
-                                    <constraint firstItem="ZOI-cb-DzL" firstAttribute="top" secondItem="uby-L8-aM0" secondAttribute="bottom" constant="10" id="ivS-8h-iRV"/>
-                                    <constraint firstAttribute="trailing" secondItem="uby-L8-aM0" secondAttribute="trailing" constant="5" id="pnc-Td-Nb3"/>
-                                    <constraint firstItem="uby-L8-aM0" firstAttribute="leading" secondItem="3wz-3d-2z5" secondAttribute="leading" constant="5" id="uoM-UZ-e9m"/>
+                                    <constraint firstItem="hG6-3v-sja" firstAttribute="centerX" secondItem="3wz-3d-2z5" secondAttribute="centerX" id="C1h-uy-f6t"/>
+                                    <constraint firstItem="hG6-3v-sja" firstAttribute="leading" secondItem="3wz-3d-2z5" secondAttribute="leading" constant="5" id="K88-JU-0qL"/>
+                                    <constraint firstAttribute="bottom" secondItem="hG6-3v-sja" secondAttribute="bottom" constant="5" id="S1k-FP-vmm"/>
+                                    <constraint firstItem="hG6-3v-sja" firstAttribute="top" secondItem="3wz-3d-2z5" secondAttribute="top" constant="5" id="aza-tP-7Af"/>
+                                    <constraint firstAttribute="trailing" secondItem="hG6-3v-sja" secondAttribute="trailing" constant="5" id="pTt-Ki-AvN"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t2D-BE-piJ">
@@ -1283,7 +1286,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TOw-lq-3UQ">
                                                     <rect key="frame" x="275" y="24" width="75" height="77.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjK-LN-VBZ">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PjK-LN-VBZ">
                                                             <rect key="frame" x="0.0" y="0.0" width="75" height="53.5"/>
                                                             <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="38"/>
                                                             <color key="textColor" red="0.42352941179999998" green="0.56862745100000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1327,10 +1330,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="H3r-Ge-BoN" firstAttribute="centerX" secondItem="zd7-b0-UGx" secondAttribute="centerX" id="2dd-lJ-JPQ"/>
+                            <constraint firstItem="H3r-Ge-BoN" firstAttribute="centerY" secondItem="zd7-b0-UGx" secondAttribute="centerY" id="BEs-44-ZVJ"/>
                             <constraint firstItem="H3r-Ge-BoN" firstAttribute="bottom" secondItem="zd7-b0-UGx" secondAttribute="bottom" id="Qz1-kJ-Fxu"/>
                             <constraint firstItem="H3r-Ge-BoN" firstAttribute="top" secondItem="zd7-b0-UGx" secondAttribute="top" id="RX4-Sa-epI"/>
                             <constraint firstItem="H3r-Ge-BoN" firstAttribute="leading" secondItem="zd7-b0-UGx" secondAttribute="leading" id="f13-Tk-v9l"/>
                             <constraint firstItem="H3r-Ge-BoN" firstAttribute="trailing" secondItem="zd7-b0-UGx" secondAttribute="trailing" id="jH3-QC-2R1"/>
+                            <constraint firstItem="H3r-Ge-BoN" firstAttribute="width" secondItem="ixH-m6-LeR" secondAttribute="width" id="lr4-Xw-7zv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zd7-b0-UGx"/>
                     </view>
@@ -1382,7 +1388,7 @@
         <image name="next" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WUj-cL-4aX"/>
+        <segue reference="whd-bK-ELV"/>
         <segue reference="R2J-D1-euz"/>
         <segue reference="3IJ-DC-Fmj"/>
         <segue reference="XWG-r3-lgn"/>
